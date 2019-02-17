@@ -47,3 +47,5 @@ npm install materialize-css@next --save
 ```
 "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
 ```
+
+> **ng generate component components/authTabs --no-spec --dry-run** for testing which does'nt create actual directory at all
