@@ -49,3 +49,6 @@ npm install materialize-css@next --save
 ```
 
 > **ng generate component components/authTabs --no-spec --dry-run** for testing which does'nt create actual directory at all
+
+> **ng g module modules/auth --no-spec --flat** create a local auth module for authTabs
+> **ng g module modules/auth-routing --no-spec --flat** create a routing related module for route component
