@@ -14,3 +14,5 @@ ng serve --open
 
 > Install Mongodb [here](https://www.mongodb.com/)
 > Install Code Editor Like, Vs code, notepad++, sublime etc...
+
+> Check out Angular CLI [here](https://github.com/angular/angular-cli/wiki)
