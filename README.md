@@ -35,3 +35,15 @@ ng serve --open
 ```
 
 > Materialize Css [here](https://materializecss.com/). Add CDN to index.html
+
+> Install Materialize Package Or feel free to use CDN
+
+```
+npm install materialize-css@next --save
+```
+
+> To configure GIT BASH into vs code go to setting.json and add the following:-
+
+```
+"terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
+```
