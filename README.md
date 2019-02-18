@@ -52,3 +52,8 @@ npm install materialize-css@next --save
 
 > **ng g module modules/auth --no-spec --flat** create a local auth module for authTabs
 > **ng g module modules/auth-routing --no-spec --flat** create a routing related module for route component
+
+> ng g c components/login --no-spec --module=modules/auth.module.ts --dry-run
+
+> ng g c components/login --no-spec --module=modules/auth.module.ts
+> ng g c components/signup --no-spec --module=modules/auth.module.ts
