@@ -57,3 +57,5 @@ npm install materialize-css@next --save
 
 > ng g c components/login --no-spec --module=modules/auth.module.ts
 > ng g c components/signup --no-spec --module=modules/auth.module.ts
+
+> npm install express mongoose --save
