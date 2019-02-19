@@ -3,6 +3,7 @@ const HttpStatus = require ('http-status-codes');
 
 const User = require ('../models/userModal');
 const Helper = require ('../Helpers/helpers');
+const bcrypt = require ('bcryptjs');
 
 module.exports = {
   async CreateUser (req, res) {
@@ -37,5 +38,31 @@ module.exports = {
         .status (HttpStatus.CONFLICT)
         .json ({message: 'Username already exist'});
     }
+
+    return bcrypt.hash (password, 10, (err, hash) => {
+      if (err) {
+        return res
+          .status (HttpStatus.BAD_REQUEST)
+          .json ({message: 'Error hasing password'});
+      }
+
+      const body = {
+        username: Helper.firstLetterUpperCase (username),
+        email: Helper.lowerCase (email),
+        password: hash,
+      };
+
+      User.create (body)
+        .then (user => {
+          return res
+            .status (HttpStatus.CREATED)
+            .json ({message: 'User created successfully', user});
+        })
+        .catch (err => {
+          res
+            .status (HttpStatus.INTERNAL_SERVER_ERROR)
+            .json ({message: 'Error occured'});
+        });
+    });
   },
 };

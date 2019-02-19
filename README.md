@@ -66,6 +66,8 @@ npm install materialize-css@next --save
 
 > npm install http-status-codes --save
 
+> npm install bcryptjs --save
+
 config.js
 
 ```
