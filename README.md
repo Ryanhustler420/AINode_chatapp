@@ -64,6 +64,8 @@ npm install materialize-css@next --save
 
 > npm install joi --save
 
+> npm install http-status-codes --save
+
 config.js
 
 ```
