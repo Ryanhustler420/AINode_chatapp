@@ -1,3 +1,5 @@
 module.exports = {
-  CreateUser (req, res) {},
+  CreateUser (req, res) {
+    console.log (req.body);
+  },
 };
