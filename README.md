@@ -59,3 +59,11 @@ npm install materialize-css@next --save
 > ng g c components/signup --no-spec --module=modules/auth.module.ts
 
 > npm install express mongoose --save
+
+config.js
+
+```
+module.export = {
+    url: `mongodb://localhost:27017/dbname`,
+};
+```
