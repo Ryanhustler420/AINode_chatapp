@@ -27,5 +27,15 @@ module.exports = {
         .status (HttpStatus.CONFLICT)
         .json ({message: 'Email already exist'});
     }
+
+    const userName = await User.findOne ({
+      username: Helper.firstLetterUpperCase (username),
+    });
+
+    if (userName) {
+      return res
+        .status (HttpStatus.CONFLICT)
+        .json ({message: 'Username already exist'});
+    }
   },
 };
