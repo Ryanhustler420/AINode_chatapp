@@ -62,6 +62,8 @@ npm install materialize-css@next --save
 
 > npm install cookie-parser morgan --save
 
+> npm install joi --save
+
 config.js
 
 ```
