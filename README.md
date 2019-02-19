@@ -60,6 +60,8 @@ npm install materialize-css@next --save
 
 > npm install express mongoose --save
 
+> npm install cookie-parser morgan --save
+
 config.js
 
 ```
