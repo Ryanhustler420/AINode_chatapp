@@ -93,6 +93,7 @@ module.export = {
 
 1.  User Create
     - /api/chatapp/v1/register - POST
+    - /api/chatapp/v1/login - POST
 
 ##### Front End Endpoint
 
