@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class SignupComponent implements OnInit {
   signupForm: FormGroup;
   errorMessage: string;
+  showSpinner = false;
 
   constructor(private authService: AuthService, private fb: FormBuilder, private router: Router) {}
 
@@ -27,15 +28,19 @@ export class SignupComponent implements OnInit {
   }
 
   signupUser() {
+    this.showSpinner = true;
     // console.log(this.signupForm.value);
     this.authService.registerUser(this.signupForm.value).subscribe(
       data => {
         // console.log(data);
         this.signupForm.reset();
-        this.router.navigate(['streams']);
+        setTimeout(() => {
+          this.router.navigate(['streams']);
+        }, 2000);
       },
       err => {
         // console.log(err);
+        this.showSpinner = false;
         if (err.error.msg) {
           this.errorMessage = err.error.msg[0].message;
         }
