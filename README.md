@@ -68,6 +68,8 @@ npm install materialize-css@next --save
 
 > npm install bcryptjs --save
 
+> Testing with postman
+
 config.js
 
 ```
