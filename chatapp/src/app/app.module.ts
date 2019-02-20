@@ -4,16 +4,18 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { AuthModule } from './modules/auth.module';
 import { AuthRoutingModule } from './modules/auth-routing.module';
-import { StreamsComponent } from './components/streams/streams.component';
+// import { StreamsComponent } from './components/streams/streams.component';
+import { StreamsModule } from './modules/streams.module';
+import { StreamsRoutingModule } from './modules/streams-routing.module';
 // import { AuthTabsComponent } from './components/auth-tabs/auth-tabs.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    StreamsComponent
+    AppComponent
+    // StreamsComponent
     // AuthTabsComponent
   ],
-  imports: [BrowserModule, AuthModule, AuthRoutingModule],
+  imports: [BrowserModule, AuthModule, AuthRoutingModule, StreamsModule, StreamsRoutingModule],
   providers: [],
   bootstrap: [AppComponent]
 })
