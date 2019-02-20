@@ -74,6 +74,8 @@ npm install materialize-css@next --save
 
 > ng g service services/auth --no-spec --flat
 
+> npm install cors --save
+
 config.js
 
 ```

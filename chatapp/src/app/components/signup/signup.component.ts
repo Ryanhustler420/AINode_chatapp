@@ -29,8 +29,9 @@ export class SignupComponent implements OnInit {
     this.authService.registerUser(this.signupForm.value).subscribe(
       data => {
         console.log(data);
+        this.signupForm.reset();
       },
-      err => console.log
+      err => console.log(err)
     );
   }
 }
