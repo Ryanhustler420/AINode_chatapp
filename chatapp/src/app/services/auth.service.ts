@@ -17,4 +17,14 @@ export class AuthService {
   registerUser(body): Observable<any> {
     return this.http.post(`${BASEURL}/register`, body);
   }
+
+  /**
+   *
+   * @param body consist of the user credential object which we'll pass through this parameter
+   * this route is for login existing user
+   */
+
+  loginUser(body): Observable<any> {
+    return this.http.post(`${BASEURL}/login`, body);
+  }
 }
