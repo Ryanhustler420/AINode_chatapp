@@ -76,6 +76,10 @@ npm install materialize-css@next --save
 
 > npm install cors --save
 
+> ng generate component components/streams --no-spec
+
+> ng g module modules/streams --no-spec --flat
+
 config.js
 
 ```
