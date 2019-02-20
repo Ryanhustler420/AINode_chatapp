@@ -70,10 +70,13 @@ npm install materialize-css@next --save
 
 > Testing with postman
 
+> npm install jsonwebtoken --save
+
 config.js
 
 ```
 module.export = {
     url: `mongodb://localhost:27017/dbname`,
+    secret: `yourjsonsecretkeygoeshere_dontShareWithAnyOne`
 };
 ```

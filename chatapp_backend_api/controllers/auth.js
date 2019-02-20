@@ -4,6 +4,8 @@ const HttpStatus = require ('http-status-codes');
 const User = require ('../models/userModal');
 const Helper = require ('../Helpers/helpers');
 const bcrypt = require ('bcryptjs');
+const jwt = require ('jsonwebtoken');
+const dbConfig = require ('../config/secret');
 
 module.exports = {
   async CreateUser (req, res) {
@@ -54,9 +56,12 @@ module.exports = {
 
       User.create (body)
         .then (user => {
-          return res
+          const token = jwt.sign ({data: user}, dbConfig.secret, {
+            expiresIn: 120,
+          });
+          res
             .status (HttpStatus.CREATED)
-            .json ({message: 'User created successfully', user});
+            .json ({message: 'User created successfully', user, token});
         })
         .catch (err => {
           res
