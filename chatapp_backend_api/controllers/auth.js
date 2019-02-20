@@ -69,4 +69,47 @@ module.exports = {
         });
     });
   },
+
+  async LoginUser (req, res) {
+    const {username, password} = req.body;
+
+    if (!username || !password) {
+      return res.status (HttpStatus.NOT_FOUND).json ({
+        message: 'No Empty Fields Allowed',
+      });
+    }
+
+    await User.findOne ({
+      username: Helper.firstLetterUpperCase (username),
+    })
+      .then (user => {
+        if (!user) {
+          return res.status (HttpStatus.NOT_FOUND).json ({
+            message: 'Username not found',
+          });
+        }
+
+        return bcrypt.compare (password, user.password).then (result => {
+          if (!result) {
+            return res.status (HttpStatus.INTERNAL_SERVER_ERROR).json ({
+              message: 'Password is incorrect',
+            });
+          }
+          const token = jwt.sign ({data: user}, dbConfig.secret, {
+            expiresIn: 10000,
+          });
+          res.cookie ('auth', token);
+          return res.status (HttpStatus.OK).json ({
+            message: 'Login successful',
+            user,
+            token,
+          });
+        });
+      })
+      .catch (err => {
+        return res.status (HttpStatus.INTERNAL_SERVER_ERROR).json ({
+          message: 'Error Occured',
+        });
+      });
+  },
 };
