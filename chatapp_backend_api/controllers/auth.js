@@ -17,9 +17,7 @@ module.exports = {
 
     const {error, value} = Joi.validate (req.body, schema);
     if (error && error.details) {
-      return res
-        .status (HttpStatus.BAD_REQUEST)
-        .json ({message: error.details});
+      return res.status (HttpStatus.BAD_REQUEST).json ({msg: error.details});
     }
 
     const {username, email, password} = req.body;

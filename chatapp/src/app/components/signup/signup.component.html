@@ -2,8 +2,8 @@
   <div class="row">
     <div class="col s10 offset-s1" id="panel">
       <h3 class="center" id="title">Sign Up</h3>
-      <div id="errorMsg">
-        <span>Error occured</span>
+      <div id="errorMsg" *ngIf="errorMessage">
+        <span>{{ errorMessage }}</span>
       </div>
       <form class="col s12" [formGroup]="signupForm" novalidate (ngSubmit)="signupUser()">
         <div class="row">
