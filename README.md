@@ -72,6 +72,8 @@ npm install materialize-css@next --save
 
 > npm install jsonwebtoken --save
 
+> ng g service services/auth --no-spec --flat
+
 config.js
 
 ```
@@ -80,3 +82,8 @@ module.export = {
     secret: `yourjsonsecretkeygoeshere_dontShareWithAnyOne`
 };
 ```
+
+##### API Endpoints
+
+1.  User Create
+    - /api/chatapp/v1/register - POST
