@@ -2,3 +2,21 @@
 .nav-wrapper {
   background-color: purple;
 }
+
+.nav-content {
+  text-align: center;
+  padding: 15px;
+}
+
+.nav-div {
+  text-align: center;
+  img {
+    width: 15%;
+    border: 8px solid rgb(84, 7, 84);
+  }
+}
+
+.profile-name {
+  margin: 0px;
+  font-size: 3rem;
+}
