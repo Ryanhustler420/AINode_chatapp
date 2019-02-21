@@ -12,7 +12,7 @@ export class TokenService {
   }
 
   getToken() {
-    this.cookieService.get('chatapp_token');
+    return this.cookieService.get('chatapp_token');
   }
 
   deleteToken() {
