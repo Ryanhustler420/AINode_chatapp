@@ -6,4 +6,16 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class TokenService {
   constructor(private cookieService: CookieService) {}
+
+  setToken(token) {
+    this.cookieService.set('chatapp_token', token);
+  }
+
+  getToken() {
+    this.cookieService.get('chatapp_token');
+  }
+
+  deleteToken() {
+    this.cookieService.delete('chatapp_token');
+  }
 }
