@@ -9,10 +9,12 @@ import { StreamsModule } from './modules/streams.module';
 import { StreamsRoutingModule } from './modules/streams-routing.module';
 // import { AuthTabsComponent } from './components/auth-tabs/auth-tabs.component';
 import { CookieService } from 'ngx-cookie-service';
+// import { ToolbarComponent } from './components/toolbar/toolbar.component';
 
 @NgModule({
   declarations: [
     AppComponent
+    // ToolbarComponent
     // StreamsComponent
     // AuthTabsComponent
   ],

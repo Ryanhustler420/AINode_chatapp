@@ -86,6 +86,8 @@ npm install materialize-css@next --save
 
 > ng g guard services/auth --no-spec --flat --> choose CanActivate Interface Option
 
+> ng g c components/toolbar --no-spec
+
 config.js
 
 ```

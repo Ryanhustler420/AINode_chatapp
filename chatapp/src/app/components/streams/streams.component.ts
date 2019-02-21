@@ -16,9 +16,4 @@ export class StreamsComponent implements OnInit {
     this.token = this.tokenService.getToken();
     // console.log(this.token);
   }
-
-  logout() {
-    this.tokenService.deleteToken();
-    this.router.navigate(['']);
-  }
 }
