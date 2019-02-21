@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TokenService } from './../../services/token.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-streams',
@@ -9,10 +10,15 @@ import { TokenService } from './../../services/token.service';
 export class StreamsComponent implements OnInit {
   token: any;
 
-  constructor(private tokenService: TokenService) {}
+  constructor(private tokenService: TokenService, private router: Router) {}
 
   ngOnInit() {
     this.token = this.tokenService.getToken();
-    console.log(this.token);
+    // console.log(this.token);
+  }
+
+  logout() {
+    this.tokenService.deleteToken();
+    this.router.navigate(['']);
   }
 }
