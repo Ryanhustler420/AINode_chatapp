@@ -84,6 +84,8 @@ npm install materialize-css@next --save
 
 > npm install ngx-cookie-service --save
 
+> ng g guard services/auth --no-spec --flat --> choose CanActivate Interface Option
+
 config.js
 
 ```
