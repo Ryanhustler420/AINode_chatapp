@@ -80,6 +80,10 @@ npm install materialize-css@next --save
 
 > ng g module modules/streams --no-spec --flat
 
+> ng g service services/token --no-spec --flat
+
+> npm install ngx-cookie-service --save
+
 config.js
 
 ```
