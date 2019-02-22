@@ -92,6 +92,10 @@ npm install materialize-css@next --save
 
 > ng g c components/side --no-spec --module=modules/streams.module.ts
 
+> ng g c components/postForm --no-spec --module=modules/streams.module.ts
+
+> ng g c components/posts --no-spec --module=modules/streams.module.ts
+
 config.js
 
 ```
