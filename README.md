@@ -88,6 +88,10 @@ npm install materialize-css@next --save
 
 > ng g c components/toolbar --no-spec
 
+> ng g c components/side --no-spec --module=modules/streams.module.ts --dry-run
+
+> ng g c components/side --no-spec --module=modules/streams.module.ts
+
 config.js
 
 ```
