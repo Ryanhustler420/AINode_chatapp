@@ -96,6 +96,8 @@ npm install materialize-css@next --save
 
 > ng g c components/posts --no-spec --module=modules/streams.module.ts
 
+> ng g service services/post --no-spec --flat --module=modules/streams.module.ts
+
 config.js
 
 ```
@@ -110,6 +112,8 @@ module.export = {
 1.  User Create
     - /api/chatapp/v1/register - POST
     - /api/chatapp/v1/login - POST
+2.  Post Route
+    - /api/chatapp/v1/post/add-post - POST (create post)
 
 ##### Front End Endpoint
 

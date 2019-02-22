@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-post-form',
@@ -6,7 +7,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./post-form.component.scss']
 })
 export class PostFormComponent implements OnInit {
-  constructor() {}
+  postForm: FormGroup;
 
-  ngOnInit() {}
+  constructor(private fb: FormBuilder) {}
+
+  ngOnInit() {
+    this.init();
+  }
+
+  init() {
+    this.postForm = this.fb.group({
+      post: ['', Validators.required]
+    });
+  }
+
+  submitPost() {
+    console.log(this.postForm.value);
+  }
 }
