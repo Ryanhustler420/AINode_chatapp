@@ -98,6 +98,8 @@ npm install materialize-css@next --save
 
 > ng g service services/post --no-spec --flat --module=modules/streams.module.ts
 
+> ng g class services/token-interceptor --no-spec --flat
+
 config.js
 
 ```

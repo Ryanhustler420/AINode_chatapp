@@ -1,5 +1,7 @@
 module.exports = {
   AddPost (req, res) {
-    console.log (req.body);
+    console.log ('hello');
+    console.log (req.cookies);
+    console.log (req.user);
   },
 };
