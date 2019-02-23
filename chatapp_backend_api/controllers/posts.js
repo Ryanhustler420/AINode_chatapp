@@ -1,5 +1,5 @@
 const Joi = require ('joi');
-
+const User = require ('../models/userModal');
 const Post = require ('../models/postModals');
 const HttpStatus = require ('http-status-codes');
 
@@ -22,7 +22,21 @@ module.exports = {
     };
 
     Post.create (body)
-      .then (post => {
+      .then (async post => {
+        await User.update (
+          {
+            _id: req.user._id,
+          },
+          {
+            $push: {
+              posts: {
+                postId: post._id,
+                post: req.body.post,
+                created: new Date (),
+              },
+            },
+          }
+        );
         res.status (HttpStatus.OK).json ({
           message: 'Post Created',
           post,
