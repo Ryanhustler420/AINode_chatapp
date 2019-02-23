@@ -9,7 +9,7 @@ const dbConfig = require ('../config/secret');
 
 module.exports = {
   VerifyToken: (req, res, next) => {
-    if (req.headers.authorization) {
+    if (!req.headers.authorization) {
       return res
         .status (httpStatus.UNAUTHORIZED)
         .json ({message: 'No Authorization'});
