@@ -10,7 +10,7 @@ const dbConfig = require ('../config/secret');
 module.exports = {
   VerifyToken: (req, res, next) => {
     const token = req.cookies.auth;
-
+    // console.log (req.headers);
     // check the token is available
     if (!token) {
       return res.status (httpStatus.FORBIDDEN).json ({

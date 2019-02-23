@@ -9,6 +9,8 @@ import { StreamsModule } from './modules/streams.module';
 import { StreamsRoutingModule } from './modules/streams-routing.module';
 // import { AuthTabsComponent } from './components/auth-tabs/auth-tabs.component';
 import { CookieService } from 'ngx-cookie-service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './services/token-interceptor';
 // import { ToolbarComponent } from './components/toolbar/toolbar.component';
 
 @NgModule({
@@ -19,7 +21,14 @@ import { CookieService } from 'ngx-cookie-service';
     // AuthTabsComponent
   ],
   imports: [BrowserModule, AuthModule, AuthRoutingModule, StreamsModule, StreamsRoutingModule],
-  providers: [CookieService],
+  providers: [
+    CookieService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
