@@ -3,7 +3,7 @@
     <img src="http://placehold.it/50x50" alt="" class="circle" />
     <span class="title">{{ post.username }}</span>
     <p class="time">
-      {{ post.created }} <br />
+      {{ TimeFromNow(post.created) }} <br />
       Country | City
     </p>
   </li>

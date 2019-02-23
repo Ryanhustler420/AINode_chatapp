@@ -100,6 +100,8 @@ npm install materialize-css@next --save
 
 > ng g class services/token-interceptor --no-spec --flat
 
+> npm install moment --save
+
 config.js
 
 ```
