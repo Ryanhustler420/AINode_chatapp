@@ -5,5 +5,6 @@ const PostCtrl = require ('../controllers/posts');
 const Whois = require ('../Helpers/Whois');
 
 router.post ('/post/add-post', Whois.VerifyToken, PostCtrl.AddPost);
+router.get ('/posts', Whois.VerifyToken, PostCtrl.GetAllPosts);
 
 module.exports = router;
