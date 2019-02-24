@@ -104,6 +104,8 @@ npm install materialize-css@next --save
 
 > npm install --save socket.io
 
+> npm install socket.io-client --save
+
 config.js
 
 ```
