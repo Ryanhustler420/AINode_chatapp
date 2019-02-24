@@ -102,6 +102,8 @@ npm install materialize-css@next --save
 
 > npm install moment --save
 
+> npm install --save socket.io
+
 config.js
 
 ```

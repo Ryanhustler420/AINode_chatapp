@@ -10,6 +10,9 @@ app.use (cors ());
 
 const dbconfig = require ('./config/secret');
 
+const server = require ('http').createServer (app);
+const io = require ('socket.io').listen (server);
+
 app.use ((req, res, next) => {
   res.header ('Access-Control-Allow-Origin', '*');
   res.header ('Access-Control-Allow-Credentials', 'true');
@@ -46,6 +49,6 @@ const posts = require ('./routes/postRoutes');
 app.use ('/api/chatapp/v1/', auth);
 app.use ('/api/chatapp/v1/', posts);
 
-app.listen (3000, () => {
+server.listen (3000, () => {
   console.log ('Running on port 3000');
 });
