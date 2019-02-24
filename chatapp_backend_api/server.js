@@ -43,6 +43,8 @@ mongoose.connect (dbconfig.url, {
   useNewUrlParser: true,
 });
 
+require ('./socket/streams') (io);
+
 const auth = require ('./routes/authRoutes');
 const posts = require ('./routes/postRoutes');
 
