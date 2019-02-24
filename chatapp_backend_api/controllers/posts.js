@@ -62,4 +62,26 @@ module.exports = {
         .json ({message: 'Error occured'});
     }
   },
+
+  async AddLike (req, res) {
+    const post_id = req.body._id;
+
+    await Post.update (
+      {_id: post_id},
+      {
+        $push: {
+          likes: {username: req.user.username},
+        },
+        $inc: {totalLikes: 1},
+      }
+    )
+      .then (() => {
+        res.status (HttpStatus.OK).json ({message: 'You liked the post'});
+      })
+      .catch (err =>
+        res
+          .status (HttpStatus.INTERNAL_SERVER_ERROR)
+          .json ({message: 'Error occured'})
+      );
+  },
 };
