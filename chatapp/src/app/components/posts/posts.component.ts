@@ -31,6 +31,10 @@ export class PostsComponent implements OnInit {
     });
   }
 
+  LikePost(post) {
+    console.log(post);
+  }
+
   TimeFromNow(time) {
     return moment(time).fromNow();
   }
