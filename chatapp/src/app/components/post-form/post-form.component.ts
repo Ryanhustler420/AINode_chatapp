@@ -29,6 +29,9 @@ export class PostFormComponent implements OnInit {
   submitPost() {
     this.postService.addPost(this.postForm.value).subscribe(data => {
       // console.log(data);
+      this.socket.emit('refresh', {
+        /** you can pass data as an object from this event emit */
+      });
       this.postForm.reset();
     });
     // console.log(this.postForm.value);
