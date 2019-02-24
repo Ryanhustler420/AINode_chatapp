@@ -106,6 +106,8 @@ npm install materialize-css@next --save
 
 > npm install socket.io-client --save
 
+> npm install lodash --save
+
 config.js
 
 ```
