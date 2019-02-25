@@ -10,6 +10,7 @@ import { PostService } from '../services/post.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CommentsComponent } from '../components/comments/comments.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { CommentsComponent } from '../components/comments/comments.component';
     PostsComponent,
     CommentsComponent
   ],
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, HttpClientModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, HttpClientModule, RouterModule],
   exports: [StreamsComponent, ToolbarComponent],
   providers: [TokenService, PostService]
 })
