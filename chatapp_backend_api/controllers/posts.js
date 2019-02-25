@@ -87,4 +87,33 @@ module.exports = {
           .json ({message: 'Error occured'})
       );
   },
+
+  async AddComment (req, res) {
+    // console.log (req.body);
+    const post_id = req.body.postId;
+
+    await Post.update (
+      {
+        _id: post_id,
+      },
+      {
+        $push: {
+          comments: {
+            userId: req.user._id,
+            username: req.user.username,
+            comment: req.body.comment,
+            createdAt: Date.now (),
+          },
+        },
+      }
+    )
+      .then (() => {
+        res.status (HttpStatus.OK).json ({message: 'Comment has added'});
+      })
+      .catch (err =>
+        res
+          .status (HttpStatus.INTERNAL_SERVER_ERROR)
+          .json ({message: 'Error occured'})
+      );
+  },
 };

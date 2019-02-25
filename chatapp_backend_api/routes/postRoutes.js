@@ -6,6 +6,7 @@ const Whois = require ('../Helpers/Whois');
 
 router.post ('/post/add-like', Whois.VerifyToken, PostCtrl.AddLike);
 router.post ('/post/add-post', Whois.VerifyToken, PostCtrl.AddPost);
+router.post ('/post/add-comment', Whois.VerifyToken, PostCtrl.AddComment);
 router.get ('/posts', Whois.VerifyToken, PostCtrl.GetAllPosts);
 
 module.exports = router;
