@@ -6,8 +6,19 @@
       <app-side></app-side>
     </div>
     <div class="col s12 m8 l9">
-      <div class="row">
-        <div class="col s12 m12 l10">
+      <div class="col s12 m12 l10">
+        <div class="row">
+          <div class="card">
+            <ul class="collection">
+              <li class="collection-item">
+                <span class="post">
+                  {{ post }}
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
           <div class="card postDiv">
             <div class="card-content">
               <form style="padding: 2px" [formGroup]="commentForm" (ngSubmit)="AddComment()">
@@ -26,6 +37,7 @@
           </div>
         </div>
       </div>
+
       <ul class="collection col s12 m10" *ngFor="let comment of commentArray">
         <li class="collection-item avatar">
           <img class="circle" src="http://placehold.it/50x50" alt="image" />

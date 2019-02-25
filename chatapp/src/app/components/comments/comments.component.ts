@@ -15,6 +15,7 @@ export class CommentsComponent implements OnInit, AfterViewInit {
   commentForm: FormGroup;
   postId: any;
   commentArray = [];
+  post: string;
 
   socket: any;
 
@@ -57,6 +58,7 @@ export class CommentsComponent implements OnInit, AfterViewInit {
   GetPost() {
     this.postService.getPost(this.postId).subscribe(data => {
       // console.log(data);
+      this.post = data.post.post;
       this.commentArray = data.post.comments.reverse();
     });
   }
