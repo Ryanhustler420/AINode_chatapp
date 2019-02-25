@@ -17,7 +17,7 @@
                     formControlName="comment"
                     placeholder="Write a comment..."
                   ></textarea>
-                  <button class="btn postBtn">
+                  <button class="btn postBtn" [disabled]="!commentForm.valid">
                     Add Comment
                   </button>
                 </div>
