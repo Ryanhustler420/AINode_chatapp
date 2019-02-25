@@ -18,7 +18,7 @@ export class CommentsComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.postId = this.route.snapshot.paramMap.get('id');
-    this.toolbarElement = document.querySelector('.nav-content');
+    this.toolbarElement = document.querySelectorAll('.couldBeHide');
     this.init();
     this.GetPost();
   }
@@ -30,7 +30,9 @@ export class CommentsComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.toolbarElement.style.display = 'none';
+    this.toolbarElement.forEach(element => {
+      element.style.display = 'none';
+    });
   }
 
   AddComment() {
