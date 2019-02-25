@@ -2,6 +2,8 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { PostService } from 'src/app/services/post.service';
 import { ActivatedRoute } from '@angular/router';
+import io from 'socket.io-client';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-comments',
@@ -14,13 +16,20 @@ export class CommentsComponent implements OnInit, AfterViewInit {
   postId: any;
   commentArray = [];
 
-  constructor(private fb: FormBuilder, private postService: PostService, private route: ActivatedRoute) {}
+  socket: any;
+
+  constructor(private fb: FormBuilder, private postService: PostService, private route: ActivatedRoute) {
+    this.socket = io('http://localhost:3000');
+  }
 
   ngOnInit() {
     this.postId = this.route.snapshot.paramMap.get('id');
     this.toolbarElement = document.querySelectorAll('.couldBeHide');
     this.init();
     this.GetPost();
+    this.socket.on('refreshPage', data => {
+      this.GetPost();
+    });
   }
 
   init() {
@@ -40,6 +49,7 @@ export class CommentsComponent implements OnInit, AfterViewInit {
 
     this.postService.addComment(this.postId, this.commentForm.value.comment).subscribe(data => {
       // console.log(data);
+      this.socket.emit('refresh', {});
       this.commentForm.reset();
     });
   }
@@ -47,7 +57,11 @@ export class CommentsComponent implements OnInit, AfterViewInit {
   GetPost() {
     this.postService.getPost(this.postId).subscribe(data => {
       // console.log(data);
-      this.commentArray = data.post.comments;
+      this.commentArray = data.post.comments.reverse();
     });
+  }
+
+  TimeFromNow(time) {
+    return moment(time).fromNow();
   }
 }
