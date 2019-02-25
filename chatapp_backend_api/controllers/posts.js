@@ -63,6 +63,20 @@ module.exports = {
     }
   },
 
+  async GetSinglePost (req, res) {
+    await Post.findOne ({_id: req.params.id})
+      .populate ('userId')
+      .populate ('comments.userId')
+      .then (post =>
+        res.status (HttpStatus.OK).json ({message: 'Post found', post})
+      )
+      .catch (err =>
+        res
+          .status (HttpStatus.NOT_FOUND)
+          .json ({message: 'Post not found', post})
+      );
+  },
+
   async AddLike (req, res) {
     const post_id = req.body._id;
 
