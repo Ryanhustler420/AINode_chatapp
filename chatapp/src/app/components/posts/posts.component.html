@@ -31,7 +31,7 @@
           <span class="iconSpan">
             {{ post.totalLikes }}
           </span>
-          <i class="material-icons" style="margin-left: 12px;">chat</i>
+          <i class="material-icons" (click)="OpenCommentBox(post)" style="margin-left: 12px;">chat</i>
           <span class="iconSpan">
             {{ post.comments.length }}
           </span>

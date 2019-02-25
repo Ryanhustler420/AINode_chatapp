@@ -108,6 +108,8 @@ npm install materialize-css@next --save
 
 > npm install lodash --save
 
+> ng g component components/comments --no-spec --module=modules/streams.module.ts
+
 config.js
 
 ```
