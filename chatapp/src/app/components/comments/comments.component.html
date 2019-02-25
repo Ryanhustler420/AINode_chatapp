@@ -26,6 +26,16 @@
           </div>
         </div>
       </div>
+      <ul class="collection col s12 m10" *ngFor="let comment of commentArray">
+        <li class="collection-item avatar">
+          <img class="circle" src="http://placehold.it/50x50" alt="image" />
+          <span class="title">
+            {{ comment.username }}
+          </span>
+          <p class="time">{{ comment.createdAt }}</p>
+          <p class="postComment">{{ comment.comment }}</p>
+        </li>
+      </ul>
     </div>
   </div>
 </div>

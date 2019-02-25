@@ -12,6 +12,7 @@ export class CommentsComponent implements OnInit, AfterViewInit {
   toolbarElement: any;
   commentForm: FormGroup;
   postId: any;
+  commentArray = [];
 
   constructor(private fb: FormBuilder, private postService: PostService, private route: ActivatedRoute) {}
 
@@ -19,6 +20,7 @@ export class CommentsComponent implements OnInit, AfterViewInit {
     this.postId = this.route.snapshot.paramMap.get('id');
     this.toolbarElement = document.querySelector('.nav-content');
     this.init();
+    this.GetPost();
   }
 
   init() {
@@ -37,6 +39,13 @@ export class CommentsComponent implements OnInit, AfterViewInit {
     this.postService.addComment(this.postId, this.commentForm.value.comment).subscribe(data => {
       // console.log(data);
       this.commentForm.reset();
+    });
+  }
+
+  GetPost() {
+    this.postService.getPost(this.postId).subscribe(data => {
+      // console.log(data);
+      this.commentArray = data.post.comments;
     });
   }
 }
