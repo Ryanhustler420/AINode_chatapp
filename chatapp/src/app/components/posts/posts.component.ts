@@ -30,10 +30,18 @@ export class PostsComponent implements OnInit {
   }
 
   AllPosts() {
-    this.postService.getAllPosts().subscribe(data => {
-      // console.log(data);
-      this.posts = data.posts;
-    });
+    this.postService.getAllPosts().subscribe(
+      data => {
+        // console.log(data);
+        this.posts = data.posts;
+      },
+      err => {
+        if (err.error.token === null) {
+          this.tokenService.deleteToken();
+          this.router.navigate(['']);
+        }
+      }
+    );
   }
 
   LikePost(post) {
