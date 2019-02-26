@@ -126,6 +126,7 @@ module.export = {
 1.  User Create
     - /api/chatapp/v1/register - POST
     - /api/chatapp/v1/login - POST
+    - /api/chatapp/v1/users - GET (GET ALL USERS)
 2.  Post Route
     - /api/chatapp/v1/post/add-post - POST (create post)
     - /api/chatapp/v1/post/add-like - POST
