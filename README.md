@@ -112,6 +112,8 @@ npm install materialize-css@next --save
 
 > ng g component components/people --no-spec --module=modules/streams.module.ts
 
+> ng g service services/users --no-spec --flat
+
 > config.js
 
 ```
