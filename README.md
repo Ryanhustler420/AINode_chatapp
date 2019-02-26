@@ -128,6 +128,10 @@ module.export = {
     - /api/chatapp/v1/login - POST
 2.  Post Route
     - /api/chatapp/v1/post/add-post - POST (create post)
+    - /api/chatapp/v1/post/add-like - POST
+    - /api/chatapp/v1/post/add-comment - POST
+    - /api/chatapp/v1/post/posts - GET (GET ALL POST)
+    - /api/chatapp/v1/post/posts/:id - GET (GET SINGLE POST)
 
 ##### Front End Endpoint
 
@@ -135,3 +139,5 @@ module.export = {
     - /
 2.  Stream aka Home
     - /streams
+    - /post/:id
+    - /people
