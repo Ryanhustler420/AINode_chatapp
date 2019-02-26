@@ -110,7 +110,9 @@ npm install materialize-css@next --save
 
 > ng g component components/comments --no-spec --module=modules/streams.module.ts
 
-config.js
+> ng g component components/people --no-spec --module=modules/streams.module.ts
+
+> config.js
 
 ```
 module.export = {
