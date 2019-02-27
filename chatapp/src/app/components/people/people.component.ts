@@ -31,7 +31,7 @@ export class PeopleComponent implements OnInit {
   GetUser() {
     this.userService.GetUserById(this.loggedInUser._id).subscribe(data => {
       this.userArray = data.result.following;
-      console.log(this.userArray);
+      // console.log(data.result.following);
     });
   }
 
@@ -39,5 +39,17 @@ export class PeopleComponent implements OnInit {
     this.userService.FollowUser(user).subscribe(data => {
       console.log(data);
     });
+  }
+
+  CheckInArray(arr, id) {
+    if (arr.length > 0) {
+      const result = _.find(arr, ['userFollowed._id', id]);
+      // console.log(arr);
+      if (result) {
+        return true;
+      } else {
+        return false;
+      }
+    }
   }
 }

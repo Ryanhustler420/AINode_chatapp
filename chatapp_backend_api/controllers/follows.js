@@ -14,7 +14,7 @@ module.exports = {
         {
           $push: {
             following: {
-              userFollowed: req.body.userFollowed,
+              userFollowed: req.body.userFollowed._id,
             },
           },
         }
