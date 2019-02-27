@@ -14,6 +14,7 @@ import { RouterModule } from '@angular/router';
 import { PeopleComponent } from '../components/people/people.component';
 import { UsersService } from '../services/users.service';
 import { FollowingComponent } from '../components/following/following.component';
+import { FollowersComponent } from '../components/followers/followers.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { FollowingComponent } from '../components/following/following.component'
     PostsComponent,
     CommentsComponent,
     PeopleComponent,
-    FollowingComponent
+    FollowingComponent,
+    FollowersComponent
   ],
   imports: [CommonModule, FormsModule, ReactiveFormsModule, HttpClientModule, RouterModule],
   exports: [StreamsComponent, ToolbarComponent],

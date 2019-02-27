@@ -21,7 +21,7 @@ module.exports = {
     await User.findOne ({_id: req.params.id})
       .populate ('posts.postId')
       .populate ('following.userFollowed')
-      .populate ('followers.followers')
+      .populate ('followers.follower')
       .then (result => {
         res.status (httpStatus.OK).json ({message: 'User by id', result});
       })
