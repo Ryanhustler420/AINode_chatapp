@@ -14,6 +14,14 @@ export class UsersService {
     return this.http.get(`${BASE_URL}/users`);
   }
 
+  GetUserById(id): Observable<any> {
+    return this.http.get(`${BASE_URL}/users/${id}`);
+  }
+
+  GetUserByName(username): Observable<any> {
+    return this.http.get(`${BASE_URL}/users/${username}`);
+  }
+
   // this is also possibe here you have to use '.then' method
   // async GetAllUsers() {
   //   return await this.http.get(`${BASE_URL}/users`);
