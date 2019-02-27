@@ -18,4 +18,8 @@ export class UsersService {
   // async GetAllUsers() {
   //   return await this.http.get(`${BASE_URL}/users`);
   // }
+
+  FollowUser(userFollowed): Observable<any> {
+    return this.http.post(`${BASE_URL}/follow-user`, userFollowed);
+  }
 }

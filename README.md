@@ -135,6 +135,8 @@ module.export = {
     - /api/chatapp/v1/post/add-comment - POST
     - /api/chatapp/v1/post/posts - GET (GET ALL POST)
     - /api/chatapp/v1/post/posts/:id - GET (GET SINGLE POST)
+3.  Follow
+    - /api/chatapp/v1/follow-user
 
 ##### Front End Endpoint
 
