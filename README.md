@@ -114,6 +114,8 @@ npm install materialize-css@next --save
 
 > ng g service services/users --no-spec --flat
 
+> ng g component components/following --no-spec --module=modules/streams.module.ts
+
 > config.js
 
 ```
@@ -148,3 +150,4 @@ module.export = {
     - /streams
     - /post/:id
     - /people
+    - /people/following
