@@ -53,6 +53,10 @@ export class NotificationsComponent implements OnInit {
   }
 
   deleteNotification(data) {
-    console.log('delete', data);
+    // console.log('delete', data);
+    this.usersService.DeleteNotification(data._id).subscribe(value => {
+      // console.log(value);
+      this.socket.emit('refresh', {});
+    });
   }
 }
