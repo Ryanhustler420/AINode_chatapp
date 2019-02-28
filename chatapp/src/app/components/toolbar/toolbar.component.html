@@ -3,8 +3,22 @@
     <div class="nav-wrapper">
       <a (click)="GoToHome()" style="cursor: pointer;" class="brand-logo">Chat app</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="sass.html">Sass</a></li>
-        <li><a href="badges.html">Components</a></li>
+        <li class="dropdown-button dropdown-trigger" data-target="dropdown">
+          <i class="fa fa-globe fa-1x badge"></i>
+          <span class="nav-label-icon">2</span>
+          <ul id="dropdown" class="dropdown-content col s12 collection">
+            <li class="collection-item avatar"><a href="#!">one</a></li>
+            <li class="collection-item avatar"><a href="#!">two</a></li>
+            <!-- <li class="collection-item avatar" class="divider" tabindex="-1"></li> -->
+            <li class="collection-item avatar"><a href="#!">three</a></li>
+            <li class="collection-item avatar">
+              <a href="#!"><i class="material-icons">view_module</i>four</a>
+            </li>
+            <li class="collection-item avatar">
+              <a href="#!"><i class="material-icons">cloud</i>five</a>
+            </li>
+          </ul>
+        </li>
         <li><a (click)="logout()">Logout</a></li>
       </ul>
     </div>

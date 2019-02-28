@@ -20,3 +20,19 @@
   margin: 0px;
   font-size: 2rem;
 }
+
+.dropdown-content {
+  width: 320px !important;
+  padding: 5px 20px !important;
+}
+
+.dropdown-content li {
+  padding: 15px;
+}
+
+.nav-label-icon {
+  margin: 0px 0px 15px 5px;
+  background: red;
+  padding: 2px 8px;
+  border-radius: 50%;
+}
