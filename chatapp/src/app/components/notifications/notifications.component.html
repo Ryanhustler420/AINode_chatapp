@@ -14,6 +14,10 @@
             <i class="material-icons">brightness_1</i>
           </a>
           <p class="time">{{ TimeFromNow(data.created) }}</p>
+          <div>
+            <i class="material-icons" (click)="markNotificationRead(data)">check</i>
+            <i class="material-icons" (click)="deleteNotification(data)">delete_forever</i>
+          </div>
         </li>
       </ul>
       <div class="row" *ngIf="notifications.length <= 0">
