@@ -52,3 +52,17 @@
 .disabled {
   color: #c0c0c0 !important;
 }
+
+.unRead {
+  color: purple;
+  // margin: 0px !important;
+  // padding: 0px !important;
+  font-weight: bold;
+}
+
+.isRead {
+  color: purple;
+  // margin: 0px !important;
+  // padding: 0px !important;
+  font-weight: normal;
+}
