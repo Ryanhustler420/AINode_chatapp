@@ -19,7 +19,7 @@ export class UsersService {
   }
 
   GetUserByName(username): Observable<any> {
-    return this.http.get(`${BASE_URL}/users/${username}`);
+    return this.http.get(`${BASE_URL}/users_with/${username}`);
   }
 
   // this is also possibe here you have to use '.then' method

@@ -31,5 +31,12 @@ export class NotificationsComponent implements OnInit {
       this.notifications = data.result.notifications;
       console.log(this.notifications);
     });
+
+    // OR BY USERNAME
+
+    // this.usersService.GetUserByName(this.loggedUser.username).subscribe(data => {
+    //   this.notifications = data.result.notifications;
+    //   console.log(this.notifications);
+    // });
   }
 }

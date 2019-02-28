@@ -138,7 +138,7 @@ module.export = {
     - /api/chatapp/v1/login - POST
     - /api/chatapp/v1/users - GET (GET ALL USERS)
     - /api/chatapp/v1/users/:id - GET (GET SINGLE USERS)
-    - /api/chatapp/v1/users/:username - GET (GET USERS BY USERNAME)
+    - /api/chatapp/v1/users_with/:username - GET (GET USERS BY USERNAME)
 2.  Post Route
     - /api/chatapp/v1/post/add-post - POST (create post)
     - /api/chatapp/v1/post/add-like - POST
