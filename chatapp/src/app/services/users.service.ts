@@ -34,4 +34,12 @@ export class UsersService {
   UnFollowUser(userUnFollowed): Observable<any> {
     return this.http.post(`${BASE_URL}/unfollow-user`, { userUnFollowed });
   }
+
+  MarkNotification(notificationId): Observable<any> {
+    return this.http.post(`${BASE_URL}/mark/${notificationId}`, { notificationId });
+  }
+
+  DeleteNotification(notificationId): Observable<any> {
+    return this.http.post(`${BASE_URL}/delete/${notificationId}`, { notificationId });
+  }
 }

@@ -45,7 +45,10 @@ export class NotificationsComponent implements OnInit {
   }
 
   markNotificationRead(data) {
-    console.log('mark', data);
+    // console.log('mark', data);
+    this.usersService.MarkNotification(data._id).subscribe(value => {
+      console.log(value);
+    });
   }
 
   deleteNotification(data) {

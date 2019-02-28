@@ -98,4 +98,37 @@ module.exports = {
         });
       });
   },
+  MarkNotification (req, res) {
+    console.log (req.body);
+    // const notification_id = req.body.notificationId;
+    // const user = req.user;
+    // const mark = async () => {
+    //   await User.update (
+    //     {
+    //       _id: user._id,
+    //       'notifications.senderId': {$et: notification_id},
+    //     },
+    //     {
+    //       $set: {
+    //         notifications: {
+    //           read: true,
+    //         },
+    //       },
+    //     }
+    //   );
+    // };
+
+    // mark ()
+    //   .then (() => {
+    //     res.status (HttpStatus.OK).json ({
+    //       message: 'Read Successfully',
+    //     });
+    //   })
+    //   .catch (err => {
+    //     res.status (HttpStatus.INTERNAL_SERVER_ERROR).json ({
+    //       message: 'Error occured',
+    //     });
+    //   });
+  },
+  DeleteNotification (req, res) {},
 };
