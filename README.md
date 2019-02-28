@@ -1,5 +1,7 @@
 # AINode_chatapp
 
+##### Install these as you go
+
 this app has build with node js and angular with ionic framework
 
 > Install Node js
@@ -117,6 +119,8 @@ npm install materialize-css@next --save
 > ng g component components/following --no-spec --module=modules/streams.module.ts
 
 > ng g component components/followers --no-spec --module=modules/streams.module.ts
+
+> ng g component components/notifications --no-spec --module=modules/streams.module.ts
 
 > config.js
 

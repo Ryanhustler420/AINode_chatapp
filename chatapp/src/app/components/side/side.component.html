@@ -54,9 +54,11 @@
       Photos<a href="#!" class="secondary-content"><i class="material-icons">insert_photo</i></a>
     </div>
   </li>
-  <li class="collection-item">
-    <div>
-      Notifiacations<a href="#!" class="secondary-content"><i class="material-icons">notifications_active</i></a>
-    </div>
+  <li class="collection-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
+    <a [routerLink]="['/notifications']">
+      <div>
+        Notifiacations<a href="#!" class="secondary-content"><i class="material-icons">notifications_active</i></a>
+      </div>
+    </a>
   </li>
 </ul>
