@@ -6,7 +6,7 @@
       <app-side></app-side>
     </div>
     <div class="col s12 m8 l9">
-      <div class="row">
+      <div class="row" *ngIf="following.length > 0">
         <div class="col s12 m6 l4 cardDiv" *ngFor="let user of following">
           <div class="card">
             <a>
@@ -24,6 +24,9 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="row" *ngIf="following.length <= 0">
+        <h4 class="text">You are not following anybody</h4>
       </div>
     </div>
   </div>

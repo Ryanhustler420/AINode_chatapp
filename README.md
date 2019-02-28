@@ -154,3 +154,4 @@ module.export = {
     - /post/:id
     - /people
     - /people/following
+    - /people/followers
