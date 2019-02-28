@@ -22,8 +22,8 @@
 }
 
 .dropdown-content {
-  width: 320px !important;
-  padding: 5px 20px !important;
+  width: 40% !important;
+  padding: 0px !important;
 }
 
 .dropdown-content li {
@@ -35,4 +35,20 @@
   background: red;
   padding: 2px 8px;
   border-radius: 50%;
+}
+
+.time {
+  float: right;
+  margin-right: 5px !important;
+  margin-bottom: 10px !important;
+  font-style: italic;
+}
+
+.text {
+  text-align: center;
+  font-size: 18px;
+}
+
+.disabled {
+  color: #c0c0c0 !important;
 }

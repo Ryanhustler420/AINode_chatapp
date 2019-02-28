@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { TokenService } from 'src/app/services/token.service';
 import { Router } from '@angular/router';
 import * as M from 'materialize-css';
+import { UsersService } from 'src/app/services/users.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-toolbar',
@@ -10,7 +12,8 @@ import * as M from 'materialize-css';
 })
 export class ToolbarComponent implements OnInit {
   user: any;
-  constructor(private tokenService: TokenService, private router: Router) {}
+  notifications = [];
+  constructor(private tokenService: TokenService, private router: Router, private userService: UsersService) {}
 
   ngOnInit() {
     this.user = this.tokenService.GetPayloadOfToken();
@@ -21,6 +24,7 @@ export class ToolbarComponent implements OnInit {
       coverTrigger: false,
       constrainWidth: true
     });
+    this.GetUser();
   }
 
   logout() {
@@ -28,7 +32,18 @@ export class ToolbarComponent implements OnInit {
     this.router.navigate(['']);
   }
 
+  TimeFromNow(time) {
+    return moment(time).fromNow();
+  }
+
   GoToHome() {
     this.router.navigate(['streams']);
+  }
+
+  GetUser() {
+    this.userService.GetUserById(this.user._id).subscribe(data => {
+      this.notifications = data.result.notifications.reverse();
+      // console.log(this.notifications);
+    });
   }
 }
