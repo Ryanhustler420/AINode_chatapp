@@ -1,3 +1,48 @@
-<p>
-  my-post works!
-</p>
+<ul class="collection col s12 m12 l10" *ngFor="let post of myPost">
+  <li class="collection-item avatar">
+    <img src="http://placehold.it/50x50" alt="" class="circle" />
+    <span class="title">{{ post.postId.username }}</span>
+    <p class="time">
+      {{ TimeFromNow(post.postId.created) }} <br />
+      <!-- Country | City -->
+    </p>
+  </li>
+  <div class="row">
+    <div class="col s12">
+      <div class="card">
+        <!-- <div class="card-image">
+          <img
+            class="postImage"
+            src="https://images.pexels.com/photos/1931370/pexels-photo-1931370.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+            alt="pexel_image"
+            srcset=""
+          />
+        </div> -->
+        <div class="card-content">
+          <p>{{ post.postId.post }}</p>
+        </div>
+        <div class="card-action" style="display: flex;">
+          <i
+            (click)="LikePost(post)"
+            [ngClass]="!CheckInLikesArray(post.postId.likes, user.username) ? 'notLiked' : 'liked'"
+            class="material-icons"
+            >thumb_up</i
+          >
+          <span class="iconSpan">
+            {{ post.postId.totalLikes }}
+          </span>
+          <i
+            class="material-icons"
+            [ngClass]="!CheckInLikesArray(post.postId.comments, user.username) ? 'notLiked' : 'liked'"
+            (click)="OpenCommentBox(post.postId)"
+            style="margin-left: 12px;"
+            >chat</i
+          >
+          <span class="iconSpan">
+            {{ post.postId.comments.length }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</ul>
