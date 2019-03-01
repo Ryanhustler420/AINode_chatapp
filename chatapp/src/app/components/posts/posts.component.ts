@@ -36,10 +36,10 @@ export class PostsComponent implements OnInit {
         this.posts = data.posts;
       },
       err => {
-        if (err.error.token === null) {
-          this.tokenService.deleteToken();
-          this.router.navigate(['']);
-        }
+        // if (err.error.token === null) {
+        //   this.tokenService.deleteToken();
+        //   this.router.navigate(['']);
+        // }
       }
     );
   }

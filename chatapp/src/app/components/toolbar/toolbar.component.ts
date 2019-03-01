@@ -51,12 +51,20 @@ export class ToolbarComponent implements OnInit {
   }
 
   GetUser() {
-    this.userService.GetUserById(this.user._id).subscribe(data => {
-      this.notifications = data.result.notifications.reverse();
-      // console.log(this.notifications);
-      const value = _.filter(this.notifications, ['read', false]);
-      this.unreadNotifications = value;
-    });
+    this.userService.GetUserById(this.user._id).subscribe(
+      data => {
+        this.notifications = data.result.notifications.reverse();
+        // console.log(this.notifications);
+        const value = _.filter(this.notifications, ['read', false]);
+        this.unreadNotifications = value;
+      },
+      err => {
+        if (err.error.token === null) {
+          this.tokenService.deleteToken();
+          this.router.navigate(['']);
+        }
+      }
+    );
   }
 
   MarkAll() {
