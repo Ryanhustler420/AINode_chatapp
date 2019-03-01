@@ -5,6 +5,7 @@ import * as M from 'materialize-css';
 import { UsersService } from 'src/app/services/users.service';
 import * as moment from 'moment';
 import io from 'socket.io-client';
+import _ from 'lodash';
 
 @Component({
   selector: 'app-toolbar',
@@ -15,6 +16,7 @@ export class ToolbarComponent implements OnInit {
   user: any;
   notifications = [];
   socket: any;
+  unreadNotifications = [];
 
   constructor(private tokenService: TokenService, private router: Router, private userService: UsersService) {
     this.socket = io('http://localhost:3000');
@@ -52,6 +54,8 @@ export class ToolbarComponent implements OnInit {
     this.userService.GetUserById(this.user._id).subscribe(data => {
       this.notifications = data.result.notifications.reverse();
       // console.log(this.notifications);
+      const value = _.filter(this.notifications, ['read', false]);
+      this.unreadNotifications = value;
     });
   }
 
