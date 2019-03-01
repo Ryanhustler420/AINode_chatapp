@@ -136,6 +136,9 @@ module.export = {
 1.  User Create
     - /api/chatapp/v1/register - POST
     - /api/chatapp/v1/login - POST
+    - /api/chatapp/v1/mark/:notification_id - POST (MARK SINGLE NOTIFICATION)
+    - /api/chatapp/v1/delete/:notification_id - POST (DELETE SINGLE NOTIFICATION)
+    - /api/chatapp/v1/mark-all - POST (MARK ALL NOTIFICATIONS AS READ)
     - /api/chatapp/v1/users - GET (GET ALL USERS)
     - /api/chatapp/v1/users/:id - GET (GET SINGLE USERS)
     - /api/chatapp/v1/users_with/:username - GET (GET USERS BY USERNAME)

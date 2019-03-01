@@ -46,4 +46,10 @@ export class ToolbarComponent implements OnInit {
       // console.log(this.notifications);
     });
   }
+
+  MarkAll() {
+    this.userService.MarkAllAsRead().subscribe(data => {
+      console.log(data);
+    });
+  }
 }

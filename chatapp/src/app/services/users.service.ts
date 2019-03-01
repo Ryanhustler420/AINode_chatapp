@@ -42,4 +42,8 @@ export class UsersService {
   DeleteNotification(notificationId): Observable<any> {
     return this.http.post(`${BASE_URL}/delete/${notificationId}`, { notificationId });
   }
+
+  MarkAllAsRead(): Observable<any> {
+    return this.http.post(`${BASE_URL}/mark-all`, { all: true });
+  }
 }
