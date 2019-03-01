@@ -15,7 +15,7 @@
             <li *ngIf="notifications.length <= 0">
               <p class="text">No Notification</p>
             </li>
-            <p class="secondary-content">
+            <p class="secondary-content" *ngIf="notifications.length > 0">
               <a class="markAll" (click)="MarkAll()">Mark All As Read</a>
             </p>
           </ul>

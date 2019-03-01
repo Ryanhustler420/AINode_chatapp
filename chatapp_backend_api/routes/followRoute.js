@@ -8,5 +8,6 @@ router.post ('/follow-user', Whois.VerifyToken, FollowCtrl.FollowUser);
 router.post ('/unfollow-user', Whois.VerifyToken, FollowCtrl.UnFollowUser);
 router.post ('/mark/:id', Whois.VerifyToken, FollowCtrl.MarkNotification);
 router.post ('/delete/:id', Whois.VerifyToken, FollowCtrl.DeleteNotification);
+router.post ('/mark-all', Whois.VerifyToken, FollowCtrl.MarkAllNotifications);
 
 module.exports = router;

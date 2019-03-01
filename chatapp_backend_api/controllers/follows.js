@@ -140,4 +140,21 @@ module.exports = {
           .json ({message: 'Error occured!'});
       });
   },
+
+  async MarkAllNotifications (req, res) {
+    // https://stackoverflow.com/questions/4669178/how-to-update-multiple-array-elements-in-mongodb
+    await User.update (
+      {_id: req.user._id},
+      {$set: {'notifications.$[elem].read': true}},
+      {arrayFilters: [{'elem.read': false}], multi: true}
+    )
+      .then (() => {
+        res.status (HttpStatus.OK).json ({message: 'Marked all Successfully'});
+      })
+      .catch (err => {
+        res
+          .status (HttpStatus.INTERNAL_SERVER_ERROR)
+          .json ({message: 'Error occured!'});
+      });
+  },
 };
