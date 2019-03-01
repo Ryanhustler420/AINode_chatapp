@@ -6,15 +6,15 @@
       <p class="num" *ngIf="!metaInfo">0</p>
     </a>
   </div>
-  <div class="col s12 m4">
-    <a href="#">
+  <div class="col s12 m4" [routerLinkActive]="['']" [routerLinkActiveOptions]="{ exact: true }">
+    <a [routerLink]="['/people/following']">
       <span>Following</span>
       <p class="num" *ngIf="metaInfo">{{ metaInfo.following.length }}</p>
       <p class="num" *ngIf="!metaInfo">0</p>
     </a>
   </div>
-  <div class="col s12 m4">
-    <a href="#">
+  <div class="col s12 m4" [routerLinkActive]="['']" [routerLinkActiveOptions]="{ exact: true }">
+    <a [routerLink]="['/people/followers']">
       <span>Followers</span>
       <p class="num" *ngIf="metaInfo">{{ metaInfo.followers.length }}</p>
       <p class="num" *ngIf="!metaInfo">0</p>
