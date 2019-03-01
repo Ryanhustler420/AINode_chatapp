@@ -55,7 +55,13 @@ module.exports = {
         .populate ('userId')
         .sort ({created: -1});
 
-      return res.status (HttpStatus.OK).json ({message: 'All posts', posts});
+      const TopPosts = await Post.find ({totalLikes: {$gte: 2}})
+        .populate ('userId')
+        .sort ({created: -1});
+
+      return res
+        .status (HttpStatus.OK)
+        .json ({message: 'All posts', posts, TopPosts});
     } catch (err) {
       return res
         .status (HttpStatus.INTERNAL_SERVER_ERROR)

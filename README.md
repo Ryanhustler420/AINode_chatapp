@@ -122,6 +122,8 @@ npm install materialize-css@next --save
 
 > ng g component components/notifications --no-spec --module=modules/streams.module.ts
 
+> ng g component components/top-streams --no-spec --module=modules/streams.module.ts
+
 > config.js
 
 ```
