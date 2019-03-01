@@ -17,6 +17,7 @@ import { FollowingComponent } from '../components/following/following.component'
 import { FollowersComponent } from '../components/followers/followers.component';
 import { NotificationsComponent } from '../components/notifications/notifications.component';
 import { TopStreamsComponent } from '../components/top-streams/top-streams.component';
+import { MyPostComponent } from '../components/my-post/my-post.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { TopStreamsComponent } from '../components/top-streams/top-streams.compo
     FollowingComponent,
     FollowersComponent,
     NotificationsComponent,
-    TopStreamsComponent
+    TopStreamsComponent,
+    MyPostComponent
   ],
   imports: [CommonModule, FormsModule, ReactiveFormsModule, HttpClientModule, RouterModule],
   exports: [StreamsComponent, ToolbarComponent],
