@@ -5,6 +5,7 @@ import * as moment from 'moment';
 import _ from 'lodash';
 import { Router } from '@angular/router';
 import io from 'socket.io-client';
+import { PostService } from 'src/app/services/post.service';
 
 @Component({
   selector: 'app-my-post',
@@ -16,7 +17,12 @@ export class MyPostComponent implements OnInit {
   user: any;
   socket: any;
 
-  constructor(private userService: UsersService, private tokenService: TokenService, private router: Router) {
+  constructor(
+    private userService: UsersService,
+    private postService: PostService,
+    private tokenService: TokenService,
+    private router: Router
+  ) {
     this.socket = io('http://localhost:3000');
   }
 
@@ -45,5 +51,15 @@ export class MyPostComponent implements OnInit {
 
   OpenCommentBox(post) {
     this.router.navigate(['post', post._id]);
+  }
+
+  LikePost(post) {
+    this.postService.addLike(post).subscribe(
+      data => {
+        // console.log(data);
+        this.socket.emit('refresh', {});
+      },
+      err => console.log(err)
+    );
   }
 }
