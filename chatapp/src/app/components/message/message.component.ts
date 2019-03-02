@@ -37,10 +37,14 @@ export class MessageComponent implements OnInit {
   }
 
   SendMessage() {
+    if (!this.message) {
+      return;
+    }
     this.messageService
       .SendMessage(this.user._id, this.receiverData._id, this.receiverData.username, this.message)
       .subscribe(data => {
         console.log(data);
+        this.message = '';
       });
   }
 }
