@@ -20,6 +20,7 @@ import { TopStreamsComponent } from '../components/top-streams/top-streams.compo
 import { MyPostComponent } from '../components/my-post/my-post.component';
 import { ChatComponent } from '../components/chat/chat.component';
 import { MessageComponent } from '../components/message/message.component';
+import { MessageService } from '../services/message.service';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,6 @@ import { MessageComponent } from '../components/message/message.component';
   ],
   imports: [CommonModule, FormsModule, ReactiveFormsModule, HttpClientModule, RouterModule],
   exports: [StreamsComponent, ToolbarComponent],
-  providers: [TokenService, PostService, UsersService]
+  providers: [TokenService, PostService, UsersService, MessageService]
 })
 export class StreamsModule {}

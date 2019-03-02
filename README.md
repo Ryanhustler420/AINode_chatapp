@@ -130,6 +130,8 @@ npm install materialize-css@next --save
 
 > ng g component components/message --no-spec --module=modules/streams.module.ts
 
+> ng g s services/message --no-spec --flat
+
 > config.js
 
 ```
