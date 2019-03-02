@@ -1,3 +1,5 @@
 module.exports = {
-  SendMessage (req, res) {},
+  SendMessage (req, res) {
+    console.log (req.body);
+  },
 };

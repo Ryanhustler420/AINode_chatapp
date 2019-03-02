@@ -11,15 +11,19 @@ import { UsersService } from 'src/app/services/users.service';
 })
 export class MessageComponent implements OnInit {
   receiverName: String;
+  user: any;
+  message: String;
+  receiverData: any;
 
   constructor(
     private tokenService: TokenService,
-    messageService: MessageService,
+    private messageService: MessageService,
     private route: ActivatedRoute,
     private userService: UsersService
   ) {}
 
   ngOnInit() {
+    this.user = this.tokenService.GetPayloadOfToken();
     this.route.params.subscribe(usernameFromUrlAtTheAbove => {
       this.receiverName = usernameFromUrlAtTheAbove.name;
       this.GetUserByUsername(this.receiverName);
@@ -28,9 +32,15 @@ export class MessageComponent implements OnInit {
 
   GetUserByUsername(username) {
     this.userService.GetUserByName(username).subscribe(data => {
-      console.log(data);
+      this.receiverData = data.result;
     });
   }
 
-  SendMessage() {}
+  SendMessage() {
+    this.messageService
+      .SendMessage(this.user._id, this.receiverData._id, this.receiverData.username, this.message)
+      .subscribe(data => {
+        console.log(data);
+      });
+  }
 }
