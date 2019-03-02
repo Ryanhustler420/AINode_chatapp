@@ -126,6 +126,10 @@ npm install materialize-css@next --save
 
 > ng g component components/my-post --no-spec --module=modules/streams.module.ts
 
+> ng g component components/chat --no-spec --module=modules/streams.module.ts
+
+> ng g component components/message --no-spec --module=modules/streams.module.ts
+
 > config.js
 
 ```
