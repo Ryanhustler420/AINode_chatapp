@@ -3,6 +3,7 @@ import { TokenService } from 'src/app/services/token.service';
 import { MessageService } from 'src/app/services/message.service';
 import { ActivatedRoute } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
+import io from 'socket.io-client';
 
 @Component({
   selector: 'app-message',
@@ -15,18 +16,25 @@ export class MessageComponent implements OnInit {
   message: String;
   receiverData: any;
   messagesArray = [];
+  socket: any;
 
   constructor(
     private tokenService: TokenService,
     private messageService: MessageService,
     private route: ActivatedRoute,
     private userService: UsersService
-  ) {}
+  ) {
+    this.socket = io('http://localhost:3000/');
+  }
 
   ngOnInit() {
     this.user = this.tokenService.GetPayloadOfToken();
     this.route.params.subscribe(usernameFromUrlAtTheAbove => {
       this.receiverName = usernameFromUrlAtTheAbove.name;
+      this.GetUserByUsername(this.receiverName);
+    });
+
+    this.socket.on('refreshPage', () => {
       this.GetUserByUsername(this.receiverName);
     });
   }
@@ -41,7 +49,7 @@ export class MessageComponent implements OnInit {
   GetMessages(senderId, receiverId) {
     this.messageService.GetAllMessages(senderId, receiverId).subscribe(data => {
       this.messagesArray = data.messages.message;
-      console.log(this.messagesArray);
+      // console.log(this.messagesArray);
     });
   }
 
@@ -52,7 +60,8 @@ export class MessageComponent implements OnInit {
     this.messageService
       .SendMessage(this.user._id, this.receiverData._id, this.receiverData.username, this.message)
       .subscribe(data => {
-        console.log(data);
+        // console.log(data);
+        this.socket.emit('refresh', {});
         this.message = '';
       });
   }
