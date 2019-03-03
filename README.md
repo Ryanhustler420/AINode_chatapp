@@ -172,3 +172,54 @@ module.export = {
     - /people
     - /people/following
     - /people/followers
+
+##### DB_DESIGN_FOR_CHAT
+
+```javaScript
+
+// Assume Anki and Mona wants to talk
+
+Anki : [
+    chatList: [
+            {
+                userId: Mona_id,
+                messageId: ABCD123456789FFF
+            },
+    ]
+]
+
+Mona: [
+    chatList: [
+            {
+                userId: Anki_id,
+                messageId: ABCD123456789FFF
+            },
+    ]
+]
+
+messageSchema: [
+    {
+        id: ABCD123456789FFF
+        parties: _id,
+        sender: ANki
+        receiver:_Mona
+        messages: [
+            {
+                coversation_id: ,
+                body: ,
+                createdAt: ,
+            }
+        ]
+    }
+]
+
+parties: [
+    {
+        _id,
+        senderId,
+        receiverId
+    }
+]
+
+
+```
