@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { TokenService } from 'src/app/services/token.service';
 import { MessageService } from 'src/app/services/message.service';
 import { ActivatedRoute } from '@angular/router';
@@ -10,7 +10,7 @@ import io from 'socket.io-client';
   templateUrl: './message.component.html',
   styleUrls: ['./message.component.scss']
 })
-export class MessageComponent implements OnInit {
+export class MessageComponent implements OnInit, AfterViewInit {
   receiverName: String;
   user: any;
   message: String;
@@ -37,6 +37,15 @@ export class MessageComponent implements OnInit {
     this.socket.on('refreshPage', () => {
       this.GetUserByUsername(this.receiverName);
     });
+  }
+
+  ngAfterViewInit() {
+    const params = {
+      room1: this.user.username,
+      room2: this.receiverName
+    };
+
+    this.socket.emit('join chat', params);
   }
 
   GetUserByUsername(username) {

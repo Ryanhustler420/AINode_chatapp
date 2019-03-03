@@ -44,6 +44,7 @@ mongoose.connect (dbconfig.url, {
 });
 
 require ('./socket/streams') (io);
+require ('./socket/typing') (io);
 
 const auth = require ('./routes/authRoutes');
 const posts = require ('./routes/postRoutes');
