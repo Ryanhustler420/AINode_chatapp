@@ -4,5 +4,9 @@ module.exports = function (io) {
       socket.join (params.room1); //sender
       socket.join (params.room2); //receiver
     });
+
+    socket.on ('start_typing', data => {
+      io.to (data.receiver).emit ('is_Typing', data);
+    });
   });
 };

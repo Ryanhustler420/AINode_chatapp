@@ -41,7 +41,12 @@
         <div class="inputRow">
           <form (ngSubmit)="SendMessage()">
             <div class="input-field inputField col s10">
-              <textarea name="message" [(ngModel)]="message" class="materialize-textarea inputBox"></textarea>
+              <textarea
+                (keypress)="isTyping()"
+                name="message"
+                [(ngModel)]="message"
+                class="materialize-textarea inputBox"
+              ></textarea>
             </div>
             <div class="input-field col s1 emojiDiv">
               <button class="emojiBtn">Emoji</button>

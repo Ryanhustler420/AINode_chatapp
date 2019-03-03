@@ -17,6 +17,8 @@ export class MessageComponent implements OnInit, AfterViewInit {
   receiverData: any;
   messagesArray = [];
   socket: any;
+  typingMessage;
+  typing = false;
 
   constructor(
     private tokenService: TokenService,
@@ -36,6 +38,12 @@ export class MessageComponent implements OnInit, AfterViewInit {
 
     this.socket.on('refreshPage', () => {
       this.GetUserByUsername(this.receiverName);
+    });
+
+    this.socket.on('is_Typing', data => {
+      if (data.sender === this.receiverName) {
+        console.log(data);
+      }
     });
   }
 
@@ -73,5 +81,12 @@ export class MessageComponent implements OnInit, AfterViewInit {
         this.socket.emit('refresh', {});
         this.message = '';
       });
+  }
+
+  isTyping() {
+    this.socket.emit('start_typing', {
+      sender: this.user.username,
+      receiver: this.receiverName
+    });
   }
 }
