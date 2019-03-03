@@ -10,4 +10,10 @@ router.post (
   MessageCtrl.SendMessage
 );
 
+router.get (
+  '/chat-messages/:senderId/:receiverId',
+  Whois.VerifyToken,
+  MessageCtrl.GetAllMessage
+);
+
 module.exports = router;

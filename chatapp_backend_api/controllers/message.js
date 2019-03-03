@@ -5,6 +5,36 @@ const Conversation = require ('../models/coversationModals');
 const User = require ('../models/userModal');
 
 module.exports = {
+  async GetAllMessage (req, res) {
+    const {senderId, receiverId} = req.params;
+
+    const conversation = await Conversation.findOne ({
+      $or: [
+        {
+          $and: [
+            {'participant.senderId': senderId},
+            {'participant.receiverId': receiverId},
+          ],
+        },
+        {
+          $and: [
+            {'participant.senderId': receiverId},
+            {'participant.receiverId': senderId},
+          ],
+        },
+      ],
+    }).select ('_id');
+
+    if (conversation) {
+      const messages = await Message.findOne ({
+        conversationId: conversation._id,
+      });
+
+      res.status (HttpStatus.OK).json ({message: 'Messages returned', message});
+    } else {
+      res.status (HttpStatus.NOT_FOUND).json ({message: 'Error occured'});
+    }
+  },
   async SendMessage (req, res) {
     const {senderId, receiverId} = req.params;
 
