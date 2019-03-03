@@ -34,7 +34,7 @@ module.exports = {
         .status (HttpStatus.OK)
         .json ({message: 'Messages returned', messages});
     } else {
-      res.status (HttpStatus.NOT_FOUND).json ({message: 'Error occured'});
+      // res.status (HttpStatus.NOT_FOUND).json ({message: 'Error occured'});
     }
   },
   async SendMessage (req, res) {
