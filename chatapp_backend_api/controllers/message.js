@@ -59,7 +59,41 @@ module.exports = {
             createdAt: Date.now (),
           });
 
-          const saveMessage = await newMessage
+          await User.update (
+            {_id: req.user._id},
+            {
+              $push: {
+                chatList: {
+                  $each: [
+                    {
+                      receiverId: req.params.receiverId,
+                      messageId: newMessage,
+                    },
+                  ],
+                  $position: 0,
+                },
+              },
+            }
+          );
+
+          await User.update (
+            {_id: req.params.receiverId},
+            {
+              $push: {
+                chatList: {
+                  $each: [
+                    {
+                      receiverId: req.user._id,
+                      messageId: newMessage,
+                    },
+                  ],
+                  $position: 0,
+                },
+              },
+            }
+          );
+
+          await newMessage
             .save ()
             .then (() =>
               res.status (HttpStatus.OK).json ({message: 'Message sent'})
