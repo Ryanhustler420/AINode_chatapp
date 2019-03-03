@@ -132,6 +132,8 @@ npm install materialize-css@next --save
 
 > ng g s services/message --no-spec --flat
 
+> npm i ngx-auto-scroll --save
+
 > config.js
 
 ```
