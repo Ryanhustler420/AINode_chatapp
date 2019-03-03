@@ -25,7 +25,37 @@ module.exports = {
       },
       async (err, result) => {
         if (result.length > 0) {
+          // console.log (result);
+          await Message.update (
+            {
+              conversationId: result[0]._id,
+            },
+            {
+              $push: {
+                message: {
+                  senderId: req.user._id,
+                  receiverId: req.params.receiverId,
+                  senderName: req.user.username,
+                  receiverName: req.body.receiverName,
+                  body: req.body.message,
+                  isRead: false,
+                  createdAt: Date.now (),
+                },
+              },
+            }
+          )
+            .then (() =>
+              res
+                .status (HttpStatus.OK)
+                .json ({message: 'Message sent Successfully'})
+            )
+            .catch (err =>
+              res
+                .status (HttpStatus.INTERNAL_SERVER_ERROR)
+                .json ({message: 'Error occured'})
+            );
         } else {
+          // this else case will only execute once when the user start new Conversation
           const newConversation = new Conversation ();
           newConversation.participant.push ({
             senderId: req.user._id,
