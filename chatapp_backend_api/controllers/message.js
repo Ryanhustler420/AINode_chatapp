@@ -30,7 +30,9 @@ module.exports = {
         conversationId: conversation._id,
       });
 
-      res.status (HttpStatus.OK).json ({message: 'Messages returned', message});
+      res
+        .status (HttpStatus.OK)
+        .json ({message: 'Messages returned', messages});
     } else {
       res.status (HttpStatus.NOT_FOUND).json ({message: 'Error occured'});
     }

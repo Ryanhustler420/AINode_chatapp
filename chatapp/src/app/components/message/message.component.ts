@@ -14,6 +14,7 @@ export class MessageComponent implements OnInit {
   user: any;
   message: String;
   receiverData: any;
+  messagesArray = [];
 
   constructor(
     private tokenService: TokenService,
@@ -33,6 +34,14 @@ export class MessageComponent implements OnInit {
   GetUserByUsername(username) {
     this.userService.GetUserByName(username).subscribe(data => {
       this.receiverData = data.result;
+      this.GetMessages(this.user._id, data.result._id);
+    });
+  }
+
+  GetMessages(senderId, receiverId) {
+    this.messageService.GetAllMessages(senderId, receiverId).subscribe(data => {
+      this.messagesArray = data.messages.message;
+      console.log(this.messagesArray);
     });
   }
 
