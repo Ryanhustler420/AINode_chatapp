@@ -1,4 +1,4 @@
-const HtppStatus = require ('http-status-codes');
+const HttpStatus = require ('http-status-codes');
 
 const Message = require ('../models/messageModals');
 const Conversation = require ('../models/coversationModals');
@@ -49,7 +49,26 @@ module.exports = {
           newMessage.conversationId = saveConversation._id; // <-- _id conversation
           newMessage.sender = req.user.username;
           newMessage.receiver = req.body.receiverName;
-          newMessage.message.push ({});
+          newMessage.message.push ({
+            senderId: req.user._id,
+            receiverId: req.params.receiverId,
+            senderName: req.user.username,
+            receiverName: req.body.receiverName,
+            body: req.body.message,
+            isRead: false,
+            createdAt: Date.now (),
+          });
+
+          const saveMessage = await newMessage
+            .save ()
+            .then (() =>
+              res.status (HttpStatus.OK).json ({message: 'Message sent'})
+            )
+            .catch (err =>
+              res
+                .status (HttpStatus.INTERNAL_SERVER_ERROR)
+                .json ({message: 'Error occured'})
+            );
         }
       }
     );
