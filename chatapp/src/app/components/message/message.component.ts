@@ -45,6 +45,12 @@ export class MessageComponent implements OnInit, AfterViewInit {
         this.typing = true;
       }
     });
+
+    this.socket.on('has_stopped_typing', data => {
+      if (data.sender === this.receiverName) {
+        this.typing = false;
+      }
+    });
   }
 
   ngAfterViewInit() {
@@ -88,5 +94,16 @@ export class MessageComponent implements OnInit, AfterViewInit {
       sender: this.user.username,
       receiver: this.receiverName
     });
+
+    if (this.typingMessage) {
+      clearTimeout(this.typingMessage);
+    }
+
+    this.typingMessage = setTimeout(() => {
+      this.socket.emit('stop_typing', {
+        sender: this.user.username,
+        receiver: this.receiverName
+      });
+    }, 1500);
   }
 }

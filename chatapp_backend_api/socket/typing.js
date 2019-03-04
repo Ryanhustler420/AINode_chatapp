@@ -8,5 +8,9 @@ module.exports = function (io) {
     socket.on ('start_typing', data => {
       io.to (data.receiver).emit ('is_Typing', data);
     });
+
+    socket.on ('stop_typing', data => {
+      io.to (data.receiver).emit ('has_stopped_typing', data);
+    });
   });
 };
