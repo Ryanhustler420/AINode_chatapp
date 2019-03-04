@@ -42,7 +42,7 @@ export class MessageComponent implements OnInit, AfterViewInit {
 
     this.socket.on('is_Typing', data => {
       if (data.sender === this.receiverName) {
-        console.log(data);
+        this.typing = true;
       }
     });
   }
