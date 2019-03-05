@@ -11,6 +11,14 @@ module.exports = {
   },
 
   updateChatList: async (req, _messageId) => {
+    /**
+     * 
+     * first we remove every chat with the receiver id because the chat message 
+     * could be in 4th postion or nth position 
+     * so we have to remove that 
+     * 
+     */
+
     // sender
     await User.update (
       {
@@ -37,6 +45,12 @@ module.exports = {
         },
       }
     );
+
+    /**
+     * 
+     * here we are adding new message at the postion 0, 
+     * so now we have latest message at the position 0
+     */
 
     await User.update (
       {_id: req.user._id},
