@@ -22,7 +22,7 @@
         </li>
         <li class="dropdown-button dropdown-trigger1" data-target="dropdown1">
           <i class="fa fa-bell fa-1x badge"></i>
-          <span class="nav-label-icon" *ngIf="unreadNotifications.length > 0">{{ chatList.length }}</span>
+          <span class="nav-label-icon" *ngIf="chatList.length > 0">{{ chatList.length }}</span>
           <ul id="dropdown1" class="dropdown-content col s12 collection">
             <li class="collection-item avatar" *ngFor="let chat of chatList">
               <img src="http://placehold.it/50x50" alt="image" class="circle" style="margin-top: 6px" />

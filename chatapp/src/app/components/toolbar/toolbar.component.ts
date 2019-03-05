@@ -37,7 +37,8 @@ export class ToolbarComponent implements OnInit {
     M.Dropdown.init(dropdownElTwo, {
       alignment: 'left',
       hover: true,
-      coverTrigger: false
+      coverTrigger: false,
+      constrainWidth: true
     });
     this.GetUser();
     this.socket.on('refreshPage', () => {
