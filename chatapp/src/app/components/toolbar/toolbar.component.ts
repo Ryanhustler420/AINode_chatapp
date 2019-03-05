@@ -24,12 +24,19 @@ export class ToolbarComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.tokenService.GetPayloadOfToken();
-    const dropdownEl = document.querySelector('.dropdown-trigger');
+    const dropdownEl = document.querySelectorAll('.dropdown-trigger');
     M.Dropdown.init(dropdownEl, {
       alignment: 'right',
       hover: true,
       coverTrigger: false,
       constrainWidth: true
+    });
+
+    const dropdownElTwo = document.querySelectorAll('.dropdown-trigger1');
+    M.Dropdown.init(dropdownElTwo, {
+      alignment: 'left',
+      hover: true,
+      coverTrigger: false
     });
     this.GetUser();
     this.socket.on('refreshPage', () => {
