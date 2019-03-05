@@ -38,10 +38,10 @@
                 >
                   {{ chat.messageId.message[chat.messageId.message.length - 1].body }}
                 </span>
-                <a class="secondary-content">
+                <a class="secondary-content" *ngIf="!chat.messageId.message[chat.messageId.message.length - 1].isRead">
                   <i class="material-icons">brightness_1</i>
                 </a>
-                <a class="secondary-content">
+                <a class="secondary-content" *ngIf="chat.messageId.message[chat.messageId.message.length - 1].isRead">
                   <i class="material-icons">panorama_fish_eye</i>
                 </a>
               </p>
