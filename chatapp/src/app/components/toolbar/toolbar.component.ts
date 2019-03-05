@@ -53,6 +53,15 @@ export class ToolbarComponent implements OnInit {
   TimeFromNow(time) {
     return moment(time).fromNow();
   }
+  // check out momenjs docs
+  MessageDate(date) {
+    return moment(date).calendar(null, {
+      sameDay: '[Today]',
+      lastDay: '[Yesterday]',
+      lastWeek: 'DD/MM/YYYY',
+      sameElse: 'DD/MM/YYYY'
+    });
+  }
 
   GoToHome() {
     this.router.navigate(['streams']);

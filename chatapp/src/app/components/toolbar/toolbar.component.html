@@ -29,7 +29,7 @@
               <span class="text">
                 {{ chat.receiverId.username }}
                 <a class="secondary-content">
-                  {{ chat.messageId.message[chat.messageId.message.length - 1].createdAt }}
+                  {{ MessageDate(chat.messageId.message[chat.messageId.message.length - 1].createdAt) }}
                 </a>
               </span>
               <p style="padding-left: 51px; margin-top: -6px">
