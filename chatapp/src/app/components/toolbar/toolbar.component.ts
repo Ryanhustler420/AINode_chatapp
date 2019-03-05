@@ -77,6 +77,8 @@ export class ToolbarComponent implements OnInit {
         const value = _.filter(this.notifications, ['read', false]);
         this.unreadNotifications = value;
         this.chatList = data.result.chatList;
+        // console.log(this.chatList);
+        this.CheckIfRead(this.chatList);
       },
       err => {
         if (err.error.token === null) {
@@ -91,8 +93,8 @@ export class ToolbarComponent implements OnInit {
     const checkArray = [];
     for (let i = 0; i < arr.length; i++) {
       const receiver = arr[i].messageId.message[arr[i].messageId.message.length - 1];
-      if (this.router.url !== `/chat/${receiver.sendername}`) {
-        if (receiver.isRead === false && receiver.receivername === this.user.username) {
+      if (this.router.url !== `/chat/${receiver.senderName}`) {
+        if (receiver.isRead === false && receiver.receiverName === this.user.username) {
           checkArray.push(1);
           this.msgNumber = _.sum(checkArray);
         }

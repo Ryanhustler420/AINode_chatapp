@@ -22,7 +22,7 @@
         </li>
         <li class="dropdown-button dropdown-trigger1" data-target="dropdown1">
           <i class="fa fa-bell fa-1x badge"></i>
-          <span class="nav-label-icon" *ngIf="chatList.length > 0">{{ chatList.length }}</span>
+          <span class="nav-label-icon" *ngIf="msgNumber > 0">{{ msgNumber }}</span>
           <ul id="dropdown1" class="dropdown-content col s12 collection">
             <li class="collection-item avatar" *ngFor="let chat of chatList">
               <img src="http://placehold.it/50x50" alt="image" class="circle" style="margin-top: 6px" />
@@ -33,7 +33,11 @@
                 </a>
               </span>
               <p style="padding-left: 51px; margin-top: -6px">
-                {{ chat.messageId.message[chat.messageId.message.length - 1].body }}
+                <span
+                  [ngClass]="chat.messageId.message[chat.messageId.message.length - 1].isRead ? 'isRead' : 'unRead'"
+                >
+                  {{ chat.messageId.message[chat.messageId.message.length - 1].body }}
+                </span>
                 <a class="secondary-content">
                   <i class="material-icons">brightness_1</i>
                 </a>
