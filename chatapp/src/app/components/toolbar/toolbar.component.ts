@@ -17,6 +17,7 @@ export class ToolbarComponent implements OnInit {
   notifications = [];
   socket: any;
   unreadNotifications = [];
+  chatList = [];
 
   constructor(private tokenService: TokenService, private router: Router, private userService: UsersService) {
     this.socket = io('http://localhost:3000');
@@ -64,6 +65,7 @@ export class ToolbarComponent implements OnInit {
         // console.log(this.notifications);
         const value = _.filter(this.notifications, ['read', false]);
         this.unreadNotifications = value;
+        this.chatList = data.result.chatList;
       },
       err => {
         if (err.error.token === null) {
