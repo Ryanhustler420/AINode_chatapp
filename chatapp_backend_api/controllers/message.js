@@ -175,6 +175,47 @@ module.exports = {
     );
   },
   async MarkReceiverMessages (req, res) {
-    console.log (req.params);
+    const {senderName, receiverName} = req.params;
+
+    /**
+     * it will go each message document
+     * than inside messages array and
+     * search for where 
+     * senderName: receiverName
+     * receiverName: senderName
+     */
+
+    const messages = await Message.aggregate ([
+      {
+        $unwind: '$message',
+      },
+      {
+        $match: {
+          $and: [
+            {
+              'message.senderName': receiverName,
+              'message.receiverName': senderName,
+            },
+          ],
+        },
+      },
+    ]);
+
+    if (messages.length > 0) {
+      try {
+        messages.forEach (async value => {
+          await Message.update (
+            {
+              'message._id': value.message._id,
+            },
+            {
+              $set: {
+                'message.$.isRead': true,
+              },
+            }
+          );
+        });
+      } catch (err) {}
+    }
   },
 };
