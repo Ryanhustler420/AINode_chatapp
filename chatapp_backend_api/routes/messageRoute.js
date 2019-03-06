@@ -22,4 +22,10 @@ router.get (
   MessageCtrl.MarkReceiverMessages
 );
 
+router.get (
+  '/mark-all-messages',
+  Whois.VerifyToken,
+  MessageCtrl.MarkAllMessages
+);
+
 module.exports = router;

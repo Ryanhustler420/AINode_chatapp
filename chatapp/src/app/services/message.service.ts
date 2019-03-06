@@ -25,4 +25,8 @@ export class MessageService {
   MarkMessages(senderName, receiverName): Observable<any> {
     return this.http.get(`${BASEURL}/receiver-messages/${senderName}/${receiverName}`);
   }
+
+  MarkAllMessages(): Observable<any> {
+    return this.http.get(`${BASEURL}/mark-all-messages`);
+  }
 }
