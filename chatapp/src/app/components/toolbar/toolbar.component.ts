@@ -78,7 +78,7 @@ export class ToolbarComponent implements OnInit {
   GoToChatPage(username) {
     this.router.navigate(['chat', username]);
     this.messageService.MarkMessages(this.user.username, username).subscribe(data => {
-      console.log(data);
+      // console.log(data);
       this.socket.emit('refresh', {});
     });
   }

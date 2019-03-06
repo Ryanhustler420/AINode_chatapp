@@ -38,7 +38,12 @@
               </span>
               <p style="padding-left: 51px; margin-top: -6px">
                 <span
-                  [ngClass]="chat.messageId.message[chat.messageId.message.length - 1].isRead ? 'isRead' : 'unRead'"
+                  [ngClass]="
+                    chat.messageId.message[chat.messageId.message.length - 1].isRead ||
+                    chat.messageId.sender === chat.messageId.message[chat.messageId.message.length - 1].senderName
+                      ? 'isRead'
+                      : 'unRead'
+                  "
                 >
                   {{ chat.messageId.message[chat.messageId.message.length - 1].body }}
                 </span>
