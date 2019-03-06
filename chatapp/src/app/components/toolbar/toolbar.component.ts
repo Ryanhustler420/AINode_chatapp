@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import * as M from 'materialize-css';
 import { UsersService } from 'src/app/services/users.service';
 import * as moment from 'moment';
-import io from 'socket.io-client';
+import * as io from 'socket.io-client';
 import _ from 'lodash';
 import { MessageService } from 'src/app/services/message.service';
 

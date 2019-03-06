@@ -4,7 +4,7 @@ import { TokenService } from 'src/app/services/token.service';
 import * as moment from 'moment';
 import _ from 'lodash';
 import { Router } from '@angular/router';
-import io from 'socket.io-client';
+import * as io from 'socket.io-client';
 import { PostService } from 'src/app/services/post.service';
 
 @Component({

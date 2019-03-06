@@ -3,7 +3,7 @@ import { TokenService } from 'src/app/services/token.service';
 import { MessageService } from 'src/app/services/message.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
-import io from 'socket.io-client';
+import * as io from 'socket.io-client';
 import { CaretEvent, EmojiEvent } from 'ng2-emoji-picker';
 
 @Component({
