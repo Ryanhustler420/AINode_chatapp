@@ -108,7 +108,9 @@ export class MessageComponent implements OnInit, AfterViewInit {
       event.char +
       this.content.slice(this._lastCaretEvent.caretOffset);
     this.eventMock = JSON.stringify(event);
+    this.message = this.content;
     this.Toggled();
+    this.content = '';
   }
 
   handleCurrentCaret(event: CaretEvent) {
