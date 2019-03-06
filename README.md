@@ -134,6 +134,10 @@ npm install materialize-css@next --save
 
 > npm i ngx-auto-scroll --save
 
+> npm i ng2-emoji-picker --save
+
+> npm install --save rxjs-compat [for backward compatablity]
+
 > config.js
 
 ```
