@@ -215,7 +215,12 @@ module.exports = {
             }
           );
         });
-      } catch (err) {}
+        res.status (HttpStatus.OK).json ({message: 'Messages marked as read'});
+      } catch (err) {
+        res
+          .status (HttpStatus.INTERNAL_SERVER_ERROR)
+          .json ({message: 'Error Occured'});
+      }
     }
   },
 };
