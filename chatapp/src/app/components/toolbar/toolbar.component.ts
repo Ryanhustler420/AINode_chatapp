@@ -69,6 +69,10 @@ export class ToolbarComponent implements OnInit {
     this.router.navigate(['streams']);
   }
 
+  GoToChatPage(username) {
+    this.router.navigate(['chat', username]);
+  }
+
   GetUser() {
     this.userService.GetUserById(this.user._id).subscribe(
       data => {
