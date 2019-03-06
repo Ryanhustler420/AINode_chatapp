@@ -42,7 +42,13 @@
                 >
                   {{ chat.messageId.message[chat.messageId.message.length - 1].body }}
                 </span>
-                <a class="secondary-content" *ngIf="!chat.messageId.message[chat.messageId.message.length - 1].isRead">
+                <a
+                  class="secondary-content"
+                  *ngIf="
+                    !chat.messageId.message[chat.messageId.message.length - 1].isRead &&
+                    chat.receiverId.username !== chat.messageId.message[chat.messageId.message.length - 1].receiverName
+                  "
+                >
                   <i class="material-icons">brightness_1</i>
                 </a>
                 <a class="secondary-content" *ngIf="chat.messageId.message[chat.messageId.message.length - 1].isRead">
