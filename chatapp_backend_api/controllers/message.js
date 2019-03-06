@@ -174,4 +174,7 @@ module.exports = {
       }
     );
   },
+  async MarkReceiverMessages (req, res) {
+    console.log (req.params);
+  },
 };

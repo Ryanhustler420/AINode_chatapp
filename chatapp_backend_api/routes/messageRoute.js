@@ -16,4 +16,10 @@ router.get (
   MessageCtrl.GetAllMessage
 );
 
+router.get (
+  '/receiver-messages/:senderName/:receiverName',
+  Whois.VerifyToken,
+  MessageCtrl.MarkReceiverMessages
+);
+
 module.exports = router;
