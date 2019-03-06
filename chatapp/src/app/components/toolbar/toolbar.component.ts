@@ -126,6 +126,7 @@ export class ToolbarComponent implements OnInit {
   MarkAllMessages() {
     this.messageService.MarkAllMessages().subscribe(data => {
       this.socket.emit('refresh', {});
+      this.msgNumber = 0;
     });
   }
 }
