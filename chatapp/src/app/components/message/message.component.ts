@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
 import * as io from 'socket.io-client';
 import { CaretEvent, EmojiEvent } from 'ng2-emoji-picker';
+import _ from 'lodash';
 
 @Component({
   selector: 'app-message',
@@ -21,6 +22,7 @@ export class MessageComponent implements OnInit, AfterViewInit, OnChanges {
   socket: any;
   typingMessage;
   typing = false;
+  isOnline = false;
 
   // https://github.com/lsharir/angular2-emoji-picker/blob/master/demo/src/app/app.component.ts
 
@@ -83,7 +85,13 @@ export class MessageComponent implements OnInit, AfterViewInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     // console.log(changes);
     if (changes.OnlineUsers.currentValue.length > 0) {
-      console.log(changes.OnlineUsers.currentValue);
+      // console.log(changes.OnlineUsers.currentValue);
+      const result = _.indexOf(changes.OnlineUsers.currentValue, this.receiverName);
+      if (result > -1) {
+        this.isOnline = true;
+      } else {
+        this.isOnline = false;
+      }
     }
   }
 
