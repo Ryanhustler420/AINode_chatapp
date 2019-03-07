@@ -8,8 +8,8 @@ module.exports = function (io, User, _) {
     socket.on ('online', data => {
       socket.join (data.room);
       user.EnterRoom (socket.id, data.user, data.room);
-      const list = user.GetList (data.room);
-      io.emit ('usersOnline', _uniq (list));
+      const list = user.GetOnlineUserName (data.room);
+      io.emit ('usersOnline', _.uniq (list));
     });
   });
 };
