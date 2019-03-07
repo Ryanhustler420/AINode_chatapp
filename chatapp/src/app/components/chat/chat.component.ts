@@ -7,6 +7,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 })
 export class ChatComponent implements OnInit, AfterViewInit {
   tabElement: any;
+  _OutputOnlineUsers = [];
 
   constructor() {}
 
@@ -21,6 +22,7 @@ export class ChatComponent implements OnInit, AfterViewInit {
   }
 
   online(event) {
-    console.log(event);
+    // console.log(event);
+    this._OutputOnlineUsers = event;
   }
 }

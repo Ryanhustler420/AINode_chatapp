@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Input } from '@angular/core';
 import { TokenService } from 'src/app/services/token.service';
 import { MessageService } from 'src/app/services/message.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -12,6 +12,7 @@ import { CaretEvent, EmojiEvent } from 'ng2-emoji-picker';
   styleUrls: ['./message.component.scss']
 })
 export class MessageComponent implements OnInit, AfterViewInit {
+  @Input() OnlineUsers;
   receiverName: String;
   user: any;
   message: String;
@@ -20,6 +21,7 @@ export class MessageComponent implements OnInit, AfterViewInit {
   socket: any;
   typingMessage;
   typing = false;
+  usersArrar = [];
 
   // https://github.com/lsharir/angular2-emoji-picker/blob/master/demo/src/app/app.component.ts
 
@@ -58,6 +60,9 @@ export class MessageComponent implements OnInit, AfterViewInit {
         this.typing = true;
       }
     });
+
+    this.usersArrar = this.OnlineUsers;
+    console.log(this.usersArrar);
 
     this.socket.on('has_stopped_typing', data => {
       if (data.sender === this.receiverName) {
