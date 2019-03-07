@@ -39,7 +39,7 @@ export class ToolbarComponent implements OnInit {
       coverTrigger: false,
       constrainWidth: true
     });
-
+    this.socket.emit('online', { room: 'global', user: this.user.username });
     const dropdownElTwo = document.querySelectorAll('.dropdown-trigger1');
     M.Dropdown.init(dropdownElTwo, {
       alignment: 'right',

@@ -3,6 +3,7 @@ const mongoose = require ('mongoose');
 const cookieParser = require ('cookie-parser');
 const logger = require ('morgan');
 const cors = require ('cors');
+const _ = require ('lodash');
 
 const app = express ();
 
@@ -13,7 +14,7 @@ const io = require ('socket.io').listen (server);
 
 const {User} = require ('./Helpers/UserOnline');
 
-require ('./socket/streams') (io);
+require ('./socket/streams') (io, User, _);
 require ('./socket/typing') (io);
 
 const dbconfig = require ('./config/secret');

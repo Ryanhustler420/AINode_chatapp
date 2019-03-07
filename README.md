@@ -138,6 +138,8 @@ npm install materialize-css@next --save
 
 > npm install --save rxjs-compat [for backward compatablity]
 
+> npm i lodash --save [for back end]
+
 > config.js
 
 ```
