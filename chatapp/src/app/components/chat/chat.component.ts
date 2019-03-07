@@ -19,4 +19,8 @@ export class ChatComponent implements OnInit, AfterViewInit {
       element.style.display = 'none';
     });
   }
+
+  online(event) {
+    console.log(event);
+  }
 }
