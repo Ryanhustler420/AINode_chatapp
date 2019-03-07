@@ -14,6 +14,7 @@ export class PeopleComponent implements OnInit {
   loggedInUser: any;
   userArray = [];
   socket: any;
+  onlineusers = [];
 
   constructor(private userService: UsersService, private tokenService: TokenService) {
     this.socket = io('http://localhost:3000');
@@ -60,6 +61,19 @@ export class PeopleComponent implements OnInit {
       } else {
         return false;
       }
+    }
+  }
+
+  online(event) {
+    this.onlineusers = event;
+  }
+
+  checkIfOnline(username) {
+    const result = _.indexOf(this.onlineusers, username);
+    if (result > -1) {
+      return true;
+    } else {
+      return false;
     }
   }
 }
