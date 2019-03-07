@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, Input } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Input, OnChanges, SimpleChange, SimpleChanges } from '@angular/core';
 import { TokenService } from 'src/app/services/token.service';
 import { MessageService } from 'src/app/services/message.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -11,7 +11,7 @@ import { CaretEvent, EmojiEvent } from 'ng2-emoji-picker';
   templateUrl: './message.component.html',
   styleUrls: ['./message.component.scss']
 })
-export class MessageComponent implements OnInit, AfterViewInit {
+export class MessageComponent implements OnInit, AfterViewInit, OnChanges {
   @Input() OnlineUsers;
   receiverName: String;
   user: any;
@@ -21,7 +21,6 @@ export class MessageComponent implements OnInit, AfterViewInit {
   socket: any;
   typingMessage;
   typing = false;
-  usersArrar = [];
 
   // https://github.com/lsharir/angular2-emoji-picker/blob/master/demo/src/app/app.component.ts
 
@@ -61,9 +60,6 @@ export class MessageComponent implements OnInit, AfterViewInit {
       }
     });
 
-    this.usersArrar = this.OnlineUsers;
-    console.log(this.usersArrar);
-
     this.socket.on('has_stopped_typing', data => {
       if (data.sender === this.receiverName) {
         this.typing = false;
@@ -78,6 +74,17 @@ export class MessageComponent implements OnInit, AfterViewInit {
     };
 
     this.socket.emit('join chat', params);
+  }
+
+  // ngOnChanges() {
+  //   console.log(this.OnlineUsers);
+  // }
+
+  ngOnChanges(changes: SimpleChanges) {
+    // console.log(changes);
+    if (changes.OnlineUsers.currentValue.length > 0) {
+      console.log(changes.OnlineUsers.currentValue);
+    }
   }
 
   GetUserByUsername(username) {
