@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsersService } from 'src/app/services/users.service';
 import _ from 'lodash';
 import { TokenService } from 'src/app/services/token.service';
-import io from 'socket.io-client';
+import * as io from 'socket.io-client';
 
 @Component({
   selector: 'app-people',

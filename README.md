@@ -140,6 +140,8 @@ npm install materialize-css@next --save
 
 > npm i lodash --save [for back end]
 
+> ng g component components/images --no-spec --module=modules/streams.module.ts
+
 > config.js
 
 ```

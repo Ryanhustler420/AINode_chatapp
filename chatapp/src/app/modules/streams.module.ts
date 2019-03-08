@@ -23,6 +23,7 @@ import { MessageComponent } from '../components/message/message.component';
 import { MessageService } from '../services/message.service';
 import { NgxAutoScrollModule } from 'ngx-auto-scroll';
 import { EmojiPickerModule } from 'ng2-emoji-picker';
+import { ImagesComponent } from '../components/images/images.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { EmojiPickerModule } from 'ng2-emoji-picker';
     TopStreamsComponent,
     MyPostComponent,
     ChatComponent,
-    MessageComponent
+    MessageComponent,
+    ImagesComponent
   ],
   imports: [
     CommonModule,
