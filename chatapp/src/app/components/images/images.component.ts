@@ -21,4 +21,21 @@ export class ImagesComponent implements OnInit {
   OnFileSelected(event) {
     console.log(event);
   }
+
+  ReadAsBase64(file): Promise<any> {
+    const reader = new FileReader();
+    const fileValue = new Promise((resolve, reject) => {
+      reader.addEventListener('load', () => {
+        resolve(reader.result);
+      });
+
+      reader.addEventListener('error', err => {
+        reject(err);
+      });
+
+      reader.readAsDataURL(file);
+    });
+
+    return fileValue;
+  }
 }
