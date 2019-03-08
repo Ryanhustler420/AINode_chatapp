@@ -46,4 +46,8 @@ export class UsersService {
   MarkAllAsRead(): Observable<any> {
     return this.http.post(`${BASE_URL}/mark-all`, { all: true });
   }
+
+  AddImage(image): Observable<any> {
+    return this.http.post(`${BASE_URL}/upload-image`, { image });
+  }
 }

@@ -23,6 +23,7 @@ const posts = require ('./routes/postRoutes');
 const users = require ('./routes/userRoutes');
 const follow = require ('./routes/followRoute');
 const message = require ('./routes/messageRoute');
+const image = require ('./routes/imageRoutes');
 
 /**
  * This Middleware is doing exactly the same thing which cors() middleware
@@ -64,6 +65,7 @@ app.use ('/api/chatapp/v1/', posts);
 app.use ('/api/chatapp/v1/', users);
 app.use ('/api/chatapp/v1/', follow);
 app.use ('/api/chatapp/v1/', message);
+app.use ('/api/chatapp/v1/', image);
 
 server.listen (3000, () => {
   console.log ('Running on port 3000');
