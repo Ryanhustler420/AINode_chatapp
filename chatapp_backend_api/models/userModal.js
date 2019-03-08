@@ -36,12 +36,8 @@ const userSchema = mongoose.Schema ({
   picId: {type: String, default: ''},
   images: [
     {
-      imageId: String,
-      default: '',
-    },
-    {
-      imageVersion: String,
-      default: '',
+      imageId: {type: String, default: ''},
+      imageVersion: {type: String, default: ''},
     },
   ],
 });
