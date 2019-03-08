@@ -14,12 +14,24 @@ export class ImagesComponent implements OnInit {
     disableMultipart: true
   });
 
+  selectedFile: any;
+
   constructor() {}
 
   ngOnInit() {}
 
   OnFileSelected(event) {
-    console.log(event);
+    const file: File = event[0];
+
+    this.ReadAsBase64(file)
+      .then(result => {
+        this.selectedFile = result;
+      })
+      .catch(err => console.log(err));
+  }
+
+  Upload() {
+    console.log(this.selectedFile);
   }
 
   ReadAsBase64(file): Promise<any> {
