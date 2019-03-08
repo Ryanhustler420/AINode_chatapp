@@ -21,6 +21,8 @@ export class ToolbarComponent implements OnInit, AfterViewInit {
   unreadNotifications = [];
   chatList = [];
   msgNumber = 0;
+  imageId: any;
+  imageVersion: any;
 
   constructor(
     private tokenService: TokenService,
@@ -94,6 +96,8 @@ export class ToolbarComponent implements OnInit, AfterViewInit {
   GetUser() {
     this.userService.GetUserById(this.user._id).subscribe(
       data => {
+        this.imageId = data.result.picId;
+        this.imageVersion = data.result.picVersion;
         this.notifications = data.result.notifications.reverse();
         // console.log(this.notifications);
         const value = _.filter(this.notifications, ['read', false]);
