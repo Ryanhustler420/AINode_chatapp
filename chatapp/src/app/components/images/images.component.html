@@ -11,7 +11,7 @@
           <div class="file-field input-field">
             <div class="btn">
               <span>Profile Picture</span>
-              <input type="file" />
+              <input type="file" ng2FileSelect [uploader]="uploader" (onFileSelected)="OnFileSelected($event)" />
             </div>
             <div class="file-path-wrapper">
               <input class="file-path validate" type="text" />

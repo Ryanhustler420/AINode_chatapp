@@ -142,6 +142,8 @@ npm install materialize-css@next --save
 
 > ng g component components/images --no-spec --module=modules/streams.module.ts
 
+> npm i ng2-file-upload --save [ng2 directive for file upload]
+
 > config.js
 
 ```

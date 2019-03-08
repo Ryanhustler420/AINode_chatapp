@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FileUploader } from 'ng2-file-upload';
+
+const URL = `http://localhost:3000/api/chatapp/v1/upload-image`;
 
 @Component({
   selector: 'app-images',
@@ -6,10 +9,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./images.component.scss']
 })
 export class ImagesComponent implements OnInit {
+  uploader: FileUploader = new FileUploader({
+    url: URL,
+    disableMultipart: true
+  });
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  OnFileSelected(event) {
+    console.log(event);
   }
-
 }
