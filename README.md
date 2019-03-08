@@ -144,6 +144,10 @@ npm install materialize-css@next --save
 
 > npm i ng2-file-upload --save [ng2 directive for file upload]
 
+> npm install cloudinary --save [for back end]
+
+##### Setup Cloudinary Console
+
 > config.js
 
 ```

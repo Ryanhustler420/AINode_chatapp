@@ -32,6 +32,18 @@ const userSchema = mongoose.Schema ({
       messageId: {type: mongoose.Schema.Types.ObjectId, ref: 'Message'},
     },
   ],
+  picVersion: {type: String, default: ''},
+  picId: {type: String, default: ''},
+  images: [
+    {
+      imageId: String,
+      default: '',
+    },
+    {
+      imageVersion: String,
+      default: '',
+    },
+  ],
 });
 
 module.exports = mongoose.model ('User', userSchema);
