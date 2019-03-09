@@ -5,6 +5,7 @@
         <div class="valign-wrapper" style="background: purple;">
           <div class="col s12 imgCol">
             <img
+            *ngIf="receiverData"
               src="https://res.cloudinary.com/dcalvdelc/image/upload/v{{ receiverData.picVersion }}/{{
                 receiverData.picId
               }}"
