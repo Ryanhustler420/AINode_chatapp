@@ -52,6 +52,6 @@ export class UsersService {
   }
 
   SetDefaultImage(imageId, imageVersion): Observable<any> {
-    return this.http.get(`${BASE_URL}/set-default-image/${imageId}/${imageVersion}`);
+    return this.http.post(`${BASE_URL}/set-default-image`, { imageId, imageVersion });
   }
 }

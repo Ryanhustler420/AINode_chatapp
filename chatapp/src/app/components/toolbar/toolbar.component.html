@@ -75,16 +75,11 @@
     <div class="couldBeHide nav-content">
       <div class="nav-div">
         <img
-          src="https://res.cloudinary.com/dcalvdelc/image/upload/v{{ imageVersion }}/Chatapp-nodejs-ng/{{ imageId }}"
+          src="https://res.cloudinary.com/dcalvdelc/image/upload/v{{ imageVersion }}/{{ imageId }}"
           alt="image"
           class="circle responsive-img"
-          *ngIf="imageId"
-        />
-        <img
-          src="https://res.cloudinary.com/dcalvdelc/image/upload/v1552081957/Chatapp-nodejs-ng/user.jpg"
-          alt="image"
-          class="circle responsive-img"
-          *ngIf="!imageId"
+          *ngIf="imageId && imageVersion"
+          style="height: 150px"
         />
       </div>
       <h1 class="profile-name">{{ user.username }}</h1>

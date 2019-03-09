@@ -47,4 +47,27 @@ module.exports = {
       }
     );
   },
+  async SetDefaultImage (req, res) {
+    const {imageId, imageVersion} = req.body;
+
+    await User.update (
+      {
+        _id: req.user._id,
+      },
+      {
+        picId: imageId,
+        picVersion: imageVersion,
+      }
+    )
+      .then (() => {
+        res
+          .status (httpStatus.OK)
+          .json ({message: 'Default Image Successfully Set'});
+      })
+      .catch (err => {
+        res
+          .status (httpStatus.INTERNAL_SERVER_ERROR)
+          .json ({message: 'Error occured'});
+      });
+  },
 };

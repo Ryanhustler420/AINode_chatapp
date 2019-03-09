@@ -33,7 +33,7 @@ const userSchema = mongoose.Schema ({
     },
   ],
   picVersion: {type: String, default: '1552081957'},
-  picId: {type: String, default: 'user.jpg'},
+  picId: {type: String, default: 'Chatapp-nodejs-ng/user.jpg'},
   images: [
     {
       imageId: {type: String, default: ''},
