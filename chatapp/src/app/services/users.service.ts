@@ -50,4 +50,8 @@ export class UsersService {
   AddImage(image): Observable<any> {
     return this.http.post(`${BASE_URL}/upload-image`, { image });
   }
+
+  SetDefaultImage(imageId, imageVersion): Observable<any> {
+    return this.http.get(`${BASE_URL}/set-default-image/${imageId}/${imageVersion}`);
+  }
 }
