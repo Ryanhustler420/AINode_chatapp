@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FileUploader } from 'ng2-file-upload';
 import { UsersService } from './../../services/users.service';
+import { TokenService } from 'src/app/services/token.service';
 
 const URL = `http://localhost:3000/api/chatapp/v1/upload-image`;
 
@@ -16,10 +17,24 @@ export class ImagesComponent implements OnInit {
   });
 
   selectedFile: any;
+  user: any;
+  images = [];
 
-  constructor(private userService: UsersService) {}
+  constructor(private userService: UsersService, private tokenService: TokenService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.user = this.tokenService.GetPayloadOfToken();
+    this.GetUser();
+  }
+
+  GetUser() {
+    this.userService.GetUserById(this.user._id).subscribe(
+      data => {
+        this.images = data.result.images;
+      },
+      err => console.log(err)
+    );
+  }
 
   OnFileSelected(event) {
     const file: File = event[0];
