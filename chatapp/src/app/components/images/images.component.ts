@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FileUploader } from 'ng2-file-upload';
 import { UsersService } from './../../services/users.service';
 import { TokenService } from 'src/app/services/token.service';
+import * as io from 'socket.io-client';
 
 const URL = `http://localhost:3000/api/chatapp/v1/upload-image`;
 
@@ -20,11 +21,19 @@ export class ImagesComponent implements OnInit {
   user: any;
   images = [];
 
-  constructor(private userService: UsersService, private tokenService: TokenService) {}
+  socket: any;
+
+  constructor(private userService: UsersService, private tokenService: TokenService) {
+    this.socket = io('http://localhost:3000');
+  }
 
   ngOnInit() {
     this.user = this.tokenService.GetPayloadOfToken();
     this.GetUser();
+
+    this.socket.on('refreshPage', () => {
+      this.GetUser();
+    });
   }
 
   GetUser() {
@@ -51,7 +60,8 @@ export class ImagesComponent implements OnInit {
     if (this.selectedFile) {
       this.userService.AddImage(this.selectedFile).subscribe(
         data => {
-          console.log(data);
+          // console.log(data);
+          this.socket.emit('refresh', {});
           const filePath = <HTMLInputElement>document.getElementById('file-path');
           filePath.value = '';
         },
