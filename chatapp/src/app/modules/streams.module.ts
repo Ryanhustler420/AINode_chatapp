@@ -25,6 +25,7 @@ import { NgxAutoScrollModule } from 'ngx-auto-scroll';
 import { EmojiPickerModule } from 'ng2-emoji-picker';
 import { ImagesComponent } from '../components/images/images.component';
 import { FileUploadModule } from 'ng2-file-upload';
+import { ViewUserComponent } from '../components/view-user/view-user.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { FileUploadModule } from 'ng2-file-upload';
     MyPostComponent,
     ChatComponent,
     MessageComponent,
-    ImagesComponent
+    ImagesComponent,
+    ViewUserComponent
   ],
   imports: [
     CommonModule,

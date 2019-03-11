@@ -146,6 +146,8 @@ npm install materialize-css@next --save
 
 > npm install cloudinary --save [for back end]
 
+> ng g c components/viewUser --no-spec --module=modules/streams.module.ts
+
 ##### Setup Cloudinary Console
 
 > config.js
