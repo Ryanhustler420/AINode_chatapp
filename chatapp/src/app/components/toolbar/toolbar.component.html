@@ -8,13 +8,10 @@
           <span class="nav-label-icon" *ngIf="unreadNotifications.length > 0">{{ unreadNotifications.length }}</span>
           <ul id="dropdown" class="dropdown-content col s12 collection">
             <li class="collection-item avatar" *ngFor="let data of notifications">
-              <img
-                src="https://res.cloudinary.com/dcalvdelc/image/upload/v{{ data.senderId.picVersion }}/{{
+              <img src="https://res.cloudinary.com/dcalvdelc/image/upload/v{{ data.senderId.picVersion }}/{{
                   data.senderId.picId
                 }}"
-                alt="image"
-                class="circle"
-              />
+                alt="image" class="circle" />
               <span class="text" [ngClass]="data.read ? 'isRead' : 'unRead'">{{ data.message }}</span>
               <p class="time">{{ TimeFromNow(data.created) }}</p>
             </li>
@@ -30,19 +27,11 @@
           <i class="fa fa-bell fa-1x badge"></i>
           <span class="nav-label-icon" *ngIf="msgNumber > 0">{{ msgNumber }}</span>
           <ul id="dropdown1" class="dropdown-content col s12 collection">
-            <li
-              class="collection-item avatar"
-              *ngFor="let chat of chatList"
-              (click)="GoToChatPage(chat.receiverId.username)"
-            >
-              <img
-                src="https://res.cloudinary.com/dcalvdelc/image/upload/v{{ chat.receiverId.picVersion }}/{{
+            <li class="collection-item avatar" *ngFor="let chat of chatList" (click)="GoToChatPage(chat.receiverId.username)">
+              <img src="https://res.cloudinary.com/dcalvdelc/image/upload/v{{ chat.receiverId.picVersion }}/{{
                   chat.receiverId.picId
                 }}"
-                alt="image"
-                class="circle"
-                style="margin-top: 6px"
-              />
+                alt="image" class="circle" style="margin-top: 6px" />
               <span class="text">
                 {{ chat.receiverId.username }}
                 <a class="secondary-content">
@@ -50,23 +39,18 @@
                 </a>
               </span>
               <p style="padding-left: 51px; margin-top: -6px">
-                <span
-                  [ngClass]="
+                <span [ngClass]="
                     chat.messageId.message[chat.messageId.message.length - 1].isRead ||
                     chat.messageId.sender === chat.messageId.message[chat.messageId.message.length - 1].senderName
                       ? 'isRead'
                       : 'unRead'
-                  "
-                >
+                  ">
                   {{ chat.messageId.message[chat.messageId.message.length - 1].body }}
                 </span>
-                <a
-                  class="secondary-content"
-                  *ngIf="
+                <a class="secondary-content" *ngIf="
                     !chat.messageId.message[chat.messageId.message.length - 1].isRead &&
                     chat.receiverId.username !== chat.messageId.message[chat.messageId.message.length - 1].receiverName
-                  "
-                >
+                  ">
                   <i class="material-icons">brightness_1</i>
                 </a>
                 <a class="secondary-content" *ngIf="chat.messageId.message[chat.messageId.message.length - 1].isRead">
@@ -87,13 +71,8 @@
     </div>
     <div class="couldBeHide nav-content">
       <div class="nav-div">
-        <img
-          src="https://res.cloudinary.com/dcalvdelc/image/upload/v{{ imageVersion }}/{{ imageId }}"
-          alt="image"
-          class="circle responsive-img"
-          *ngIf="imageId && imageVersion"
-          style="height: 150px"
-        />
+        <img src="https://res.cloudinary.com/dcalvdelc/image/upload/v{{ imageVersion }}/{{ imageId }}" alt="image"
+          class="circle responsive-img" *ngIf="imageId && imageVersion" style="height: 12rem; width: 12rem;" />
       </div>
       <h1 class="profile-name">{{ user.username }}</h1>
       <p class="user-text">
