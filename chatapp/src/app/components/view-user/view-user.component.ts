@@ -1,4 +1,5 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
+import * as M from 'materialize-css';
 
 @Component({
   selector: 'app-view-user',
@@ -11,6 +12,8 @@ export class ViewUserComponent implements OnInit, AfterViewInit {
   constructor() { }
 
   ngOnInit() {
+    const tabs = document.querySelector('.tabs');
+    M.Tabs.init(tabs, {});
     this.tabEl = document.querySelectorAll('.couldBeHide');
   }
 
