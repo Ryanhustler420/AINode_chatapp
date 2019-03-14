@@ -8,13 +8,35 @@ import * as M from 'materialize-css';
 })
 export class ViewUserComponent implements OnInit, AfterViewInit {
   tabEl: any;
+  postsTab = false;
+  followingTab = false;
+  followersTab = false;
 
   constructor() { }
 
   ngOnInit() {
+    this.postsTab = true;
     const tabs = document.querySelector('.tabs');
     M.Tabs.init(tabs, {});
     this.tabEl = document.querySelectorAll('.couldBeHide');
+  }
+
+  changeTab(value) {
+    if (value === 'posts') {
+      this.postsTab = true;
+      this.followersTab = false;
+      this.followingTab = false;
+    }
+    if (value === 'following') {
+      this.followingTab = true;
+      this.postsTab = false;
+      this.followersTab = false;
+    }
+    if (value === 'followers') {
+      this.followersTab = true;
+      this.followingTab = false;
+      this.postsTab = false;
+    }
   }
 
   ngAfterViewInit() {
