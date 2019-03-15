@@ -1,5 +1,7 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import * as M from 'materialize-css';
+import { ActivatedRoute } from '@angular/router';
+import { UsersService } from './../../services/users.service';
 
 @Component({
   selector: 'app-view-user',
@@ -11,14 +13,24 @@ export class ViewUserComponent implements OnInit, AfterViewInit {
   postsTab = false;
   followingTab = false;
   followersTab = false;
+  posts = [];
+  following = [];
+  followers = [];
+  user: any;
+  name: any;
 
-  constructor() { }
+  constructor(private route: ActivatedRoute, private userService: UsersService) { }
 
   ngOnInit() {
     this.postsTab = true;
     const tabs = document.querySelector('.tabs');
     M.Tabs.init(tabs, {});
     this.tabEl = document.querySelectorAll('.couldBeHide');
+
+    this.route.params.subscribe(params => {
+      this.name = params.name;
+      this.getUserData(this.name);
+    })
   }
 
   changeTab(value) {
@@ -43,6 +55,17 @@ export class ViewUserComponent implements OnInit, AfterViewInit {
     this.tabEl.forEach(element => {
       element.style.display = 'none';
     });
+  }
+
+  getUserData(name) {
+    this.userService.GetUserByName(name).subscribe(data => {
+      console.log(data);
+      this.posts = data.result.posts;
+      this.followers = data.result.followers;
+      this.following = data.result.following;
+    }, err => {
+      console.log(err);
+    })
   }
 
 }
