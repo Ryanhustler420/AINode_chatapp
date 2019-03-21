@@ -22,13 +22,13 @@
   </div>
 </div>
 
-<div class="container">
+<div class="container" style="margin-top: 30px;">
   <div class="row">
     <div class="col s12 m4 l3">
       <div class="row">
         <div class="col s12">
-          <span class="title">Username</span>
-          <h2>Country</h2>
+          <span class="title">{{name}}</span>
+          <h2 class="cityName">Country</h2>
         </div>
       </div>
     </div>
@@ -36,11 +36,11 @@
       <div class="row">
         <div class="col s12">
           <div class="row" *ngIf="postsTab">
-            <ul class="collection col s12 m12 l10">
+            <ul class="collection col s12 m12 l10" *ngFor="let post of posts">
               <li class="collection-item avatar">
                 <img class="circle" src="http://placehold.it/100x100">
-                <span class="post">Username</span>
-                <p class="time">Time
+                <span class="post">{{post.postId.username}}</span>
+                <p class="time">{{TimeFromNow(post.created)}}
                   <br> City, Country
                 </p>
               </li>
@@ -51,16 +51,16 @@
                       <img class="postImage" src="http://placehold.it/100x100">
                     </div>
                     <div class="card-content">
-                      <p>This is cool post text</p>
+                      <p>{{post.postId.post}}</p>
                     </div>
                     <div class="card-action">
                       <i class="material-icons">thumb_up</i>
                       <span id="iconSpan">
-                        Likes
+                        {{post.postId.totalLikes}}
                       </span>
                       <i class="material-icons">chat</i>
                       <span id="iconSpan">
-                        Comment Length
+                        {{post.postId.comments.length}}
                       </span>
                     </div>
                   </div>

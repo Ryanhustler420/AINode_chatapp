@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import * as M from 'materialize-css';
 import { ActivatedRoute } from '@angular/router';
 import { UsersService } from './../../services/users.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-view-user',
@@ -59,13 +60,17 @@ export class ViewUserComponent implements OnInit, AfterViewInit {
 
   getUserData(name) {
     this.userService.GetUserByName(name).subscribe(data => {
-      console.log(data);
+      // console.log(data);
       this.posts = data.result.posts;
       this.followers = data.result.followers;
       this.following = data.result.following;
     }, err => {
       console.log(err);
     })
+  }
+
+  TimeFromNow(time) {
+    return moment(time).fromNow();
   }
 
 }
