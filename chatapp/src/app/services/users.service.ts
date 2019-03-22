@@ -56,6 +56,6 @@ export class UsersService {
   }
 
   ProfileNotifications(id): Observable<any> {
-    return this.http.post(`${BASE_URL}/user/view-profile`, { id });
+    return this.http.get(`${BASE_URL}/user/view-profile/${id}`);
   }
 }

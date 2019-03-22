@@ -148,6 +148,8 @@ npm install materialize-css@next --save
 
 > ng g c components/viewUser --no-spec --module=modules/streams.module.ts
 
+> npm install moment --save
+
 ##### Setup Cloudinary Console
 
 > config.js
