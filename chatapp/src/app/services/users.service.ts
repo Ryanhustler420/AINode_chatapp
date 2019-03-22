@@ -8,7 +8,7 @@ const BASE_URL = 'http://localhost:3000/api/chatapp/v1';
   providedIn: 'root'
 })
 export class UsersService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   GetAllUsers(): Observable<any> {
     return this.http.get(`${BASE_URL}/users`);
@@ -53,5 +53,9 @@ export class UsersService {
 
   SetDefaultImage(imageId, imageVersion): Observable<any> {
     return this.http.post(`${BASE_URL}/set-default-image`, { imageId, imageVersion });
+  }
+
+  ProfileNotifications(id): Observable<any> {
+    return this.http.post(`${BASE_URL}/user/view-profile`, { id });
   }
 }
