@@ -62,7 +62,8 @@ module.exports = {
     await User.update (
       {
         _id: useridFromParams.id,
-        'notifications.date': {$ne: dateValue},
+        'notifications.date': {$ne: [dateValue, '']},
+        'notifications.senderId': {$ne: req.user._id},
       },
       {
         $push: {
@@ -71,9 +72,20 @@ module.exports = {
             message: `${req.user.username} viewed your profile`,
             created: new Date (),
             date: dateValue,
+            viewProfile: true,
           },
         },
       }
-    );
+    )
+      .then (result => {
+        res
+          .status (httpStatus.OK)
+          .json ({message: 'Notification sent', result});
+      })
+      .catch (err => {
+        res
+          .status (httpStatus.INTERNAL_SERVER_ERROR)
+          .json ({message: 'Error occured'});
+      });
   },
 };
