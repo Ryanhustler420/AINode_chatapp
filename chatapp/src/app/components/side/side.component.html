@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col s12 m4">
-    <a href="#">
+    <a [routerLink]="['', metaInfo && metaInfo.username]">
       <span>Posts</span>
       <p class="num" *ngIf="metaInfo">{{ metaInfo.posts.length }}</p>
       <p class="num" *ngIf="!metaInfo">0</p>
