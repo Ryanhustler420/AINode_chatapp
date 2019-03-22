@@ -26,6 +26,7 @@ import { EmojiPickerModule } from 'ng2-emoji-picker';
 import { ImagesComponent } from '../components/images/images.component';
 import { FileUploadModule } from 'ng2-file-upload';
 import { ViewUserComponent } from '../components/view-user/view-user.component';
+import { ChangePasswordComponent } from '../components/change-password/change-password.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { ViewUserComponent } from '../components/view-user/view-user.component';
     ChatComponent,
     MessageComponent,
     ImagesComponent,
-    ViewUserComponent
+    ViewUserComponent,
+    ChangePasswordComponent
   ],
   imports: [
     CommonModule,

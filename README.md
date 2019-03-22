@@ -150,6 +150,8 @@ npm install materialize-css@next --save
 
 > npm install moment --save
 
+> ng g c components/changePassword --no-spec --module=modules/streams.module.ts
+
 ##### Setup Cloudinary Console
 
 > config.js
