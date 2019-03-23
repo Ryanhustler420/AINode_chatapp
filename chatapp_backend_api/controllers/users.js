@@ -117,7 +117,18 @@ module.exports = {
         }
 
         const newPassword = await User.EncryptPassword (req.body.newPassword);
-        console.log (newPassword);
+        // console.log (newPassword);
+        await User.update ({_id: req.user._id}, {password: newPassword})
+          .then (() => {
+            res
+              .status (httpStatus.OK)
+              .json ({message: 'Password Changed Successfully', result});
+          })
+          .catch (() => {
+            res
+              .status (httpStatus.INTERNAL_SERVER_ERROR)
+              .json ({message: 'Error occured'});
+          });
       });
   },
 };
