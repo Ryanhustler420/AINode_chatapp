@@ -13,6 +13,6 @@ router.get (
   Whois.VerifyToken,
   UserCtrl.SendViewProfileNotification
 );
-router.post ('/change-password', UserCtrl.ChangePassword);
+router.post ('/change-password', Whois.VerifyToken, UserCtrl.ChangePassword);
 
 module.exports = router;

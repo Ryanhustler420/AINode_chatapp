@@ -1,6 +1,8 @@
 const User = require ('../models/userModal');
 const httpStatus = require ('http-status-codes');
 const moment = require ('moment');
+const Joi = require ('joi');
+const bcrypt = require ('bcryptjs');
 
 module.exports = {
   async GetAllUsers (req, res) {
@@ -89,6 +91,33 @@ module.exports = {
       });
   },
   async ChangePassword (req, res) {
-    console.log (req.body);
+    // console.log (req.body);
+    const schema = Joi.object ().keys ({
+      cpassword: Joi.string ().required (),
+      newPassword: Joi.string ().min (5).required (),
+      confirmPassword: Joi.string ().min (5).optional (),
+    });
+
+    const {error, value} = Joi.validate (req.body, schema);
+    if (error && error.details) {
+      return res.status (httpStatus.BAD_REQUEST).json ({
+        message: error.details,
+      });
+    }
+
+    const user = await User.findOne ({_id: req.user._id});
+
+    return bcrypt
+      .compare (value.cpassword, user.password)
+      .then (async result => {
+        if (!result) {
+          return res.status (httpStatus.INTERNAL_SERVER_ERROR).json ({
+            message: 'Current password is incorrect!',
+          });
+        }
+
+        const newPassword = await User.EncryptPassword (req.body.newPassword);
+        console.log (newPassword);
+      });
   },
 };
