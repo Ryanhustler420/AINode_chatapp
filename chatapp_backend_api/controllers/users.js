@@ -88,4 +88,7 @@ module.exports = {
           .json ({message: 'Error occured'});
       });
   },
+  async ChangePassword (req, res) {
+    console.log (req.body);
+  },
 };
