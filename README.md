@@ -152,6 +152,8 @@ npm install materialize-css@next --save
 
 > ng g c components/changePassword --no-spec --module=modules/streams.module.ts
 
+> npm install request --save [for backend]
+
 ##### Setup Cloudinary Console
 
 > config.js
@@ -162,6 +164,10 @@ module.export = {
     secret: `yourjsonsecretkeygoeshere_dontShareWithAnyOne`
 };
 ```
+
+##### Geo Location
+
+> https://geoip-db.com/
 
 ##### API Endpoints
 

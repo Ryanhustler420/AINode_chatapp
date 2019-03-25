@@ -4,6 +4,7 @@ const Post = require ('../models/postModals');
 const HttpStatus = require ('http-status-codes');
 const cloudinary = require ('cloudinary');
 const moment = require ('moment');
+const request = require ('request');
 
 cloudinary.config ({
   cloud_name: 'dcalvdelc',
@@ -122,6 +123,25 @@ module.exports = {
       })
         .populate ('userId')
         .sort ({created: -1});
+
+      const user = await User.findOne ({_id: req.user._id});
+      if (!user.city && !user.country) {
+        request (
+          'https://geoip-db.com/json/',
+          {json: true},
+          async (err, res, body) => {
+            await User.update (
+              {
+                _id: req.user._id,
+              },
+              {
+                city: body.city,
+                country: body.country_name,
+              }
+            );
+          }
+        );
+      }
 
       return res
         .status (HttpStatus.OK)
