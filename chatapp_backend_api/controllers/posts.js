@@ -26,7 +26,7 @@ module.exports = {
       return res.status (HttpStatus.BAD_REQUEST).json ({msg: error.details});
     }
 
-    const body = {
+    const bodyObj = {
       userId: req.user._id,
       username: req.user.username,
       post: req.body.post,
@@ -34,7 +34,7 @@ module.exports = {
     };
 
     if (req.body.post && !req.body.image) {
-      Post.create (body)
+      Post.create (bodyObj)
         .then (async post => {
           await User.update (
             {
@@ -64,6 +64,7 @@ module.exports = {
 
     if (req.body.post && req.body.image) {
       cloudinary.uploader.upload (req.body.image, async result => {
+        console.log (result);
         const reqBody = {
           userId: req.user._id,
           username: req.user.username,
