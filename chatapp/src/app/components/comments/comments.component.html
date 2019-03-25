@@ -23,11 +23,7 @@
             <div class="card-content">
               <form style="padding: 2px" [formGroup]="commentForm" (ngSubmit)="AddComment()">
                 <div class="formDiv">
-                  <textarea
-                    class="materialize-textarea"
-                    formControlName="comment"
-                    placeholder="Write a comment..."
-                  ></textarea>
+                  <textarea class="materialize-textarea" formControlName="comment" placeholder="Write a comment..."></textarea>
                   <button class="btn postBtn" [disabled]="!commentForm.valid">
                     Add Comment
                   </button>
