@@ -11,19 +11,17 @@
           <div class="card">
             <a>
               <div class="card-image imgDiv">
-                <img
-                  src="https://res.cloudinary.com/dcalvdelc/image/upload/v{{ user.follower.picVersion }}/{{
+                <img src="https://res.cloudinary.com/dcalvdelc/image/upload/v{{ user.follower.picVersion }}/{{
                     user.follower.picId
                   }}"
-                  alt="image"
-                  class="imgCircle responsive-img"
-                />
+                  alt="image" class="imgCircle responsive-img" />
               </div>
             </a>
             <div class="card-action">
               <h3 class="card-title">
                 {{ user.follower.username }}
               </h3>
+              <p *ngIf="user && user.follower.city">{{user.follower.city}}, {{user.follower.country}}</p>
               <!-- <button class="btn" (click)="UnfollowUser(user.userFollowed)">
                 Unfollow
               </button> -->

@@ -13,6 +13,13 @@ module.exports = {
       .populate ('chatList.receiverId')
       .populate ('chatList.messageId')
       .populate ('notifications.senderId')
+      .populate ({
+        path: 'posts.postId',
+        populate: {
+          path: 'userId',
+          model: 'User',
+        },
+      })
       .then (result => {
         res.status (httpStatus.OK).json ({message: 'All users', result});
       })
@@ -31,6 +38,13 @@ module.exports = {
       .populate ('chatList.receiverId')
       .populate ('chatList.messageId')
       .populate ('notifications.senderId')
+      .populate ({
+        path: 'posts.postId',
+        populate: {
+          path: 'userId',
+          model: 'User',
+        },
+      })
       .then (result => {
         res.status (httpStatus.OK).json ({message: 'User by id', result});
       })
@@ -49,6 +63,13 @@ module.exports = {
       .populate ('chatList.receiverId')
       .populate ('chatList.messageId')
       .populate ('notifications.senderId')
+      .populate ({
+        path: 'posts.postId',
+        populate: {
+          path: 'userId',
+          model: 'User',
+        },
+      })
       .then (result => {
         res.status (httpStatus.OK).json ({message: 'User by username', result});
       })

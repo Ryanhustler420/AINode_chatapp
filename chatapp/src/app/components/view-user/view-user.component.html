@@ -28,7 +28,7 @@
       <div class="row">
         <div class="col s12">
           <span class="title">{{name}}</span>
-          <h2 class="cityName">Country</h2>
+          <h2 class="cityName" *ngIf="user && user.city">{{user.city}}, {{user.country}}</h2>
         </div>
       </div>
     </div>
@@ -43,7 +43,7 @@
                 }}">
                 <span class="post">{{post.postId.username}}</span>
                 <p class="time">{{TimeFromNow(post.created)}}
-                  <!-- <br> City, Country -->
+                  <br *ngIf="user && user.city"> @{{user.city}}, {{user.country}}
                 </p>
               </li>
               <div class="row">
