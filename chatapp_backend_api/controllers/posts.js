@@ -3,6 +3,7 @@ const User = require ('../models/userModal');
 const Post = require ('../models/postModals');
 const HttpStatus = require ('http-status-codes');
 const cloudinary = require ('cloudinary');
+const moment = require ('moment');
 
 cloudinary.config ({
   cloud_name: 'dcalvdelc',
@@ -106,11 +107,19 @@ module.exports = {
 
   async GetAllPosts (req, res) {
     try {
-      const posts = await Post.find ({})
+      const today = moment ().startOf ('day');
+      const tommorow = moment (today).add (1, 'days');
+
+      const posts = await Post.find ({
+        created: {$gte: today.toDate (), $lt: tommorow.toDate ()},
+      })
         .populate ('userId')
         .sort ({created: -1});
 
-      const TopPosts = await Post.find ({totalLikes: {$gte: 2}})
+      const TopPosts = await Post.find ({
+        totalLikes: {$gte: 2},
+        created: {$gte: today.toDate (), $lt: tommorow.toDate ()},
+      })
         .populate ('userId')
         .sort ({created: -1});
 
