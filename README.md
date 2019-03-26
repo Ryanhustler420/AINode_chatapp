@@ -263,3 +263,7 @@ parties: [
 > npm install -g ionic
 
 > npm install -g cordova
+
+> ionic start chatapp-ionic blank
+
+> ionic serve -l
