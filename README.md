@@ -251,3 +251,15 @@ parties: [
 
 
 ```
+
+# Ionic app
+
+> Create a directory name 'ionic_chat'
+
+> install node
+
+> install angular
+
+> npm install -g ionic
+
+> npm install -g cordova
